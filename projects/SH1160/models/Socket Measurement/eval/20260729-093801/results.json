@@ -1,0 +1,5865 @@
+{
+  "split": "test",
+  "savedDir": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801",
+  "overall": {
+    "map50": 0.9845636363636364,
+    "map5095": 0.7658177701596244,
+    "precision": 1.0,
+    "recall": 0.9758771929824562,
+    "f1": 0.9877913429522752
+  },
+  "perClass": [
+    {
+      "name": "lubang_besar",
+      "precision": 1.0,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map5095": 0.7767734104952606
+    },
+    {
+      "name": "tinggi_tab",
+      "precision": 1.0,
+      "recall": 0.9276315789473685,
+      "map50": 0.963690909090909,
+      "map5095": 0.5541895011000209
+    },
+    {
+      "name": "jarak_tab",
+      "precision": 1.0,
+      "recall": 1.0,
+      "map50": 0.995,
+      "map5095": 0.9664903988835913
+    }
+  ],
+  "plots": {
+    "confusionMatrix": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\confusion_matrix.png",
+    "confusionMatrixNorm": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\confusion_matrix_normalized.png",
+    "prCurve": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\BoxPR_curve.png",
+    "f1Curve": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\BoxF1_curve.png",
+    "pCurve": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\BoxP_curve.png",
+    "rCurve": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\val\\BoxPR_curve.png"
+  },
+  "predictions": [
+    {
+      "name": "WIN_20260710_23_20_41_Pro.blur.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.blur.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9646456837654114
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559715986251831
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9547454118728638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953389585018158
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951732337474823
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510682225227356
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472938179969788
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9464073181152344
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9151689410209656
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9150001406669617
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9112511277198792
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9072430729866028
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8834999799728394
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8784580230712891
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.874301016330719
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8676812052726746
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8603833913803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8390909433364868
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.blur.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.blur.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9646456837654114
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559715986251831
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9547454118728638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953389585018158
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951732337474823
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510682225227356
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472938179969788
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9464073181152344
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9151689410209656
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9150001406669617
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9112511277198792
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9072430729866028
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8834999799728394
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8784580230712891
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.874301016330719
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8676812052726746
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8603833913803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8390909433364868
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.blur.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.blur.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9646456837654114
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559715986251831
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9547454118728638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953389585018158
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951732337474823
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510682225227356
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472938179969788
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9464073181152344
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9151689410209656
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9150001406669617
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9112511277198792
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9072430729866028
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8834999799728394
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8784580230712891
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.874301016330719
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8676812052726746
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8603833913803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8390909433364868
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.exposure.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.exposure.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642589092254639
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559592008590698
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9544540643692017
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9535769820213318
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9528952240943909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9517614841461182
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9468560814857483
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9448889493942261
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9142794609069824
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9122503399848938
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9040710926055908
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.903978705406189
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.881382942199707
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8746180534362793
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8674907088279724
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8674326539039612
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.862091064453125
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8335339426994324
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.exposure.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.exposure.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642589092254639
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559592008590698
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9544540643692017
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9535769820213318
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9528952240943909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9517614841461182
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9468560814857483
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9448889493942261
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9142794609069824
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9122503399848938
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9040710926055908
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.903978705406189
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.881382942199707
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8746180534362793
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8674907088279724
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8674326539039612
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.862091064453125
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8335339426994324
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.exposure.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.exposure.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642589092254639
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559592008590698
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9544540643692017
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9535769820213318
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9528952240943909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9517614841461182
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9468560814857483
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9448889493942261
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9142794609069824
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9122503399848938
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9040710926055908
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.903978705406189
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.881382942199707
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8746180534362793
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8674907088279724
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8674326539039612
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.862091064453125
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8335339426994324
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.fliph.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.fliph.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9617631435394287
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588853120803833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.957041323184967
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9554229974746704
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953795313835144
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524850249290466
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9444596767425537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9426235556602478
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9122307896614075
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9111646413803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9007220268249512
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8887045979499817
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8822778463363647
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8543248772621155
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8534045219421387
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8515936732292175
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8436152338981628
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8430839776992798
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.fliph.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.fliph.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9617631435394287
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588853120803833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.957041323184967
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9554229974746704
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953795313835144
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524850249290466
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9444596767425537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9426235556602478
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9122307896614075
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9111646413803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9007220268249512
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8887045979499817
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8822778463363647
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8543248772621155
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8534045219421387
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8515936732292175
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8436152338981628
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8430839776992798
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.fliph.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.fliph.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9617631435394287
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588853120803833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.957041323184967
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9554229974746704
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.953795313835144
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524850249290466
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9444596767425537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9426235556602478
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9122307896614075
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9111646413803101
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9007220268249512
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8887045979499817
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8822778463363647
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8543248772621155
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8534045219421387
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8515936732292175
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8436152338981628
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8430839776992798
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.flipv.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.flipv.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962998628616333
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610124230384827
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9594247937202454
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557920098304749
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9550071358680725
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9539848566055298
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9513615965843201
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9508574604988098
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115933775901794
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8701778054237366
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8375006914138794
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8365495204925537
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.824752151966095
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8221494555473328
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8199304342269897
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8133389353752136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8102008104324341
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7571067214012146
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.flipv.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.flipv.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962998628616333
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610124230384827
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9594247937202454
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557920098304749
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9550071358680725
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9539848566055298
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9513615965843201
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9508574604988098
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115933775901794
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8701778054237366
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8375006914138794
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8365495204925537
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.824752151966095
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8221494555473328
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8199304342269897
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8133389353752136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8102008104324341
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7571067214012146
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.flipv.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.flipv.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962998628616333
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610124230384827
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9594247937202454
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557920098304749
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9550071358680725
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9539848566055298
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9513615965843201
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9508574604988098
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115933775901794
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8701778054237366
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8375006914138794
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8365495204925537
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.824752151966095
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8221494555473328
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8199304342269897
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8133389353752136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8102008104324341
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7571067214012146
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9646777510643005
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559681415557861
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9548507332801819
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9533984661102295
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.95196133852005
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505450129508972
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9473057985305786
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.946229875087738
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9153261184692383
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9141948223114014
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9122358560562134
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9006665349006653
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.884445309638977
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.876885175704956
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8739051222801208
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8717266321182251
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8590609431266785
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.833157479763031
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.noise.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.noise.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9624020457267761
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9563650488853455
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9538635611534119
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9522753953933716
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9520690441131592
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9467652440071106
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9463808536529541
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9444790482521057
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9205618500709534
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9182949662208557
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9141639471054077
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8977645635604858
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8820095658302307
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8635881543159485
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8612974286079407
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.858853816986084
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8558244109153748
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8265517354011536
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.noise.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.noise.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9644781947135925
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9559855461120605
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9540156126022339
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9530578851699829
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9526698589324951
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9481475949287415
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9460545778274536
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.944329559803009
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9142013192176819
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9138795137405396
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9110327363014221
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8969637751579285
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8864221572875977
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8742373585700989
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8700679540634155
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.866753101348877
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8563319444656372
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8253903985023499
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.noise.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.noise.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627391695976257
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9565281867980957
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9554473757743835
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9541888236999512
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9507213234901428
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9467176795005798
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9452890157699585
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9435088634490967
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9139504432678223
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.90500408411026
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9035302400588989
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8761734962463379
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8657447695732117
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8646296858787537
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8632178902626038
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.85048508644104
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8481996655464172
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8254151940345764
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.rotate.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.rotate.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580355286598206
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9535188674926758
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9521963596343994
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9518778324127197
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9493250250816345
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9483487010002136
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9457692503929138
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9440290331840515
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9326770305633545
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9264107942581177
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9078011512756348
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9049339294433594
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8946526050567627
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.893567681312561
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8860384225845337
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8771002888679504
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8627430200576782
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.835260272026062
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.rotate.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.rotate.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9541558623313904
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9529891610145569
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9516969323158264
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490444660186768
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9447614550590515
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9435000419616699
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9425837397575378
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9356858730316162
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9290785193443298
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9043106436729431
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.895038902759552
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.894646167755127
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8778250217437744
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8718787431716919
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8707454800605774
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8510317206382751
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8097563982009888
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5992994904518127
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_20_41_Pro.rotate.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_20_41_Pro.rotate.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9521200656890869
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505822658538818
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9501781463623047
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9500609636306763
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490902423858643
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9460067749023438
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9451379776000977
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9349180459976196
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9316716194152832
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9211255311965942
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9121071100234985
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9087961316108704
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8992330431938171
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8975727558135986
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8777059316635132
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8604660630226135
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.852239191532135
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8170273900032043
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.blur.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.blur.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9657986164093018
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9593825340270996
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588645100593567
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546672701835632
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510919451713562
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504624605178833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504041075706482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9451391696929932
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.92592453956604
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9166180491447449
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115739464759827
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9005261063575745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.892765998840332
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8735535144805908
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8698200583457947
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8557115793228149
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8488794565200806
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8159348368644714
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.blur.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.blur.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9657986164093018
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9593825340270996
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588645100593567
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546672701835632
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510919451713562
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504624605178833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504041075706482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9451391696929932
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.92592453956604
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9166180491447449
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115739464759827
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9005261063575745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.892765998840332
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8735535144805908
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8698200583457947
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8557115793228149
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8488794565200806
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8159348368644714
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.blur.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.blur.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9657986164093018
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9593825340270996
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588645100593567
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546672701835632
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510919451713562
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504624605178833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504041075706482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9451391696929932
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.92592453956604
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9166180491447449
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9115739464759827
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9005261063575745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.892765998840332
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8735535144805908
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8698200583457947
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8557115793228149
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8488794565200806
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8159348368644714
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.exposure.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.exposure.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9666788578033447
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9602810144424438
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578264951705933
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.956602156162262
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951154351234436
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490737915039062
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9476472735404968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.945329487323761
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.922240138053894
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9164251685142517
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9083815813064575
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9019172787666321
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.88434237241745
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8785785436630249
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8759649991989136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8627271056175232
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8209155201911926
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7898629903793335
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.exposure.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.exposure.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9666788578033447
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9602810144424438
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578264951705933
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.956602156162262
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951154351234436
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490737915039062
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9476472735404968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.945329487323761
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.922240138053894
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9164251685142517
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9083815813064575
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9019172787666321
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.88434237241745
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8785785436630249
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8759649991989136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8627271056175232
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8209155201911926
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7898629903793335
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.exposure.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.exposure.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9666788578033447
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9602810144424438
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578264951705933
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.956602156162262
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.951154351234436
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490737915039062
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9476472735404968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.945329487323761
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.922240138053894
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9164251685142517
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9083815813064575
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9019172787666321
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.88434237241745
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8785785436630249
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8759649991989136
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8627271056175232
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8209155201911926
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7898629903793335
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.fliph.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.fliph.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9649637937545776
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557121992111206
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9536720514297485
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523940682411194
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9512571692466736
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510264992713928
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490901231765747
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9383575916290283
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.902684211730957
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8974195122718811
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.88978111743927
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8882942199707031
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.886845052242279
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8762255907058716
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8656272888183594
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8644475936889648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8560214042663574
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7392326593399048
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.fliph.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.fliph.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9649637937545776
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557121992111206
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9536720514297485
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523940682411194
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9512571692466736
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510264992713928
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490901231765747
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9383575916290283
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.902684211730957
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8974195122718811
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.88978111743927
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8882942199707031
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.886845052242279
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8762255907058716
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8656272888183594
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8644475936889648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8560214042663574
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7392326593399048
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.fliph.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.fliph.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9649637937545776
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9557121992111206
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9536720514297485
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523940682411194
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9512571692466736
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510264992713928
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9490901231765747
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9383575916290283
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.902684211730957
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8974195122718811
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.88978111743927
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8882942199707031
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.886845052242279
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8762255907058716
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8656272888183594
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8644475936889648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8560214042663574
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7392326593399048
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.flipv.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.flipv.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627980589866638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627750515937805
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961754560470581
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961230993270874
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556533098220825
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556425213813782
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9527535438537598
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9418602585792542
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9267397522926331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9208438992500305
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8990274667739868
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8759675621986389
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8749255537986755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8552547693252563
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7915546298027039
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7915468811988831
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7817790508270264
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7470375299453735
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.flipv.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.flipv.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627980589866638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627750515937805
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961754560470581
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961230993270874
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556533098220825
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556425213813782
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9527535438537598
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9418602585792542
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9267397522926331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9208438992500305
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8990274667739868
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8759675621986389
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8749255537986755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8552547693252563
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7915546298027039
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7915468811988831
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7817790508270264
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7470375299453735
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.flipv.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.flipv.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627980589866638
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627750515937805
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961754560470581
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.961230993270874
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556533098220825
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9556425213813782
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9527535438537598
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9418602585792542
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9267397522926331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9208438992500305
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8990274667739868
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8759675621986389
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8749255537986755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8552547693252563
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7915546298027039
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7915468811988831
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7817790508270264
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7470375299453735
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9660201668739319
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9594846963882446
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9590269923210144
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9544463753700256
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9511530995368958
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505785703659058
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502618908882141
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9452178478240967
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9236236810684204
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9153250455856323
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9126524925231934
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8968262672424316
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.890360414981842
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8716724514961243
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8703659772872925
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8546069264411926
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8411073684692383
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8118063807487488
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.noise.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.noise.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9630746245384216
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.958083987236023
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9538682103157043
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9537943601608276
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9494579434394836
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9489261507987976
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9444547295570374
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9402630925178528
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9183549880981445
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9083088040351868
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8878928422927856
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8875707983970642
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8770481944084167
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8720159530639648
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8703851103782654
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8683902621269226
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8208045959472656
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8130900859832764
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.noise.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.noise.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627537131309509
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9563701748847961
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9532371759414673
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9530194997787476
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9497584104537964
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9492429494857788
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9441631436347961
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9433096051216125
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9103196859359741
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9044303894042969
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.891476571559906
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8823893070220947
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8799654841423035
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8773282170295715
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8651401400566101
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8630101680755615
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8439049124717712
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8316012620925903
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.noise.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.noise.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9645522832870483
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9611625671386719
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546889066696167
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9539392590522766
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.950163722038269
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9483999609947205
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9441614151000977
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9420636892318726
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9179992079734802
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9053304195404053
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8951966166496277
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8881606459617615
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8813126683235168
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8698659539222717
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.866766095161438
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8647507429122925
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8360530734062195
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8263765573501587
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.rotate.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.rotate.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9636843204498291
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9558541774749756
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9541122913360596
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9519327878952026
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9514039158821106
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9498798251152039
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9492722749710083
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9478362798690796
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9252563118934631
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9146755337715149
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9086547493934631
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8968513011932373
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8784419894218445
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.86536705493927
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8543991446495056
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8171654939651489
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6344468593597412
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5682982206344604
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.rotate.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.rotate.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9646151661872864
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610991477966309
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9597480893135071
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9535254836082458
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9526710510253906
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9495095014572144
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9479042887687683
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.947347104549408
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9220096468925476
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8962224125862122
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8930067420005798
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8749516606330872
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8730872273445129
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.858968198299408
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8537559509277344
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.840992271900177
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8318521976470947
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5461615920066833
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_27_44_Pro.rotate.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_27_44_Pro.rotate.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9604753255844116
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9588640928268433
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9550480246543884
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9447802305221558
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9443526268005371
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9422143697738647
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9416766166687012
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9400209784507751
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9207960963249207
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9114634394645691
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9008999466896057
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8987248539924622
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8916488885879517
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8872470855712891
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8811138868331909
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8424823880195618
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8275728821754456
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7539806962013245
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.blur.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.blur.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9668796062469482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627280831336975
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578308463096619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505501389503479
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.950293242931366
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9494710564613342
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491548538208008
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9452804923057556
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9242991209030151
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9093621969223022
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8965192437171936
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8957493901252747
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8847525715827942
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.853762686252594
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.738431453704834
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.584868311882019
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.3797365725040436
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.blur.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.blur.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9668796062469482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627280831336975
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578308463096619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505501389503479
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.950293242931366
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9494710564613342
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491548538208008
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9452804923057556
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9242991209030151
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9093621969223022
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8965192437171936
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8957493901252747
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8847525715827942
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.853762686252594
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.738431453704834
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.584868311882019
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.3797365725040436
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.blur.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.blur.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9668796062469482
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9627280831336975
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578308463096619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9505501389503479
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.950293242931366
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9494710564613342
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491548538208008
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9452804923057556
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9242991209030151
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9093621969223022
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8965192437171936
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8957493901252747
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8847525715827942
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.853762686252594
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.738431453704834
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.584868311882019
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.3797365725040436
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.exposure.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.exposure.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.966730535030365
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9622645974159241
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580487608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523924589157104
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9503872990608215
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9483404159545898
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477334022521973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.943300724029541
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9173609614372253
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9030351042747498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9018054604530334
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8989408016204834
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8771390318870544
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8643287420272827
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7440318465232849
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5584599375724792
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.exposure.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.exposure.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.966730535030365
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9622645974159241
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580487608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523924589157104
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9503872990608215
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9483404159545898
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477334022521973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.943300724029541
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9173609614372253
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9030351042747498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9018054604530334
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8989408016204834
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8771390318870544
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8643287420272827
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7440318465232849
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5584599375724792
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.exposure.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.exposure.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.966730535030365
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9622645974159241
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580487608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523924589157104
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9503872990608215
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9483404159545898
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477334022521973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.943300724029541
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9173609614372253
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9030351042747498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9018054604530334
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8989408016204834
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8771390318870544
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8643287420272827
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7440318465232849
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5584599375724792
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.fliph.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.fliph.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962906539440155
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9583861231803894
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9571672677993774
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9534371495246887
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502586722373962
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9487748742103577
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9449196457862854
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9373831152915955
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.899570882320404
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8966103792190552
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8939687013626099
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8810540437698364
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8579691648483276
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8511103391647339
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7364164590835571
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6354547739028931
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5996978878974915
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4614529311656952
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.fliph.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.fliph.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962906539440155
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9583861231803894
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9571672677993774
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9534371495246887
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502586722373962
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9487748742103577
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9449196457862854
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9373831152915955
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.899570882320404
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8966103792190552
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8939687013626099
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8810540437698364
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8579691648483276
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8511103391647339
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7364164590835571
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6354547739028931
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5996978878974915
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4614529311656952
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.fliph.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.fliph.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962906539440155
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9583861231803894
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9571672677993774
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9534371495246887
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502586722373962
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9487748742103577
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9449196457862854
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9373831152915955
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.899570882320404
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8966103792190552
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8939687013626099
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8810540437698364
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8579691648483276
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8511103391647339
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7364164590835571
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6354547739028931
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5996978878974915
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4614529311656952
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.flipv.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.flipv.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659567475318909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9647273421287537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580127596855164
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9574700593948364
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9573863744735718
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.955140233039856
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9422960877418518
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9405993223190308
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9062231779098511
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8757385015487671
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8655043244361877
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8479093313217163
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8239395618438721
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7834967970848083
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5385597348213196
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5215775370597839
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4562229514122009
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.flipv.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.flipv.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659567475318909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9647273421287537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580127596855164
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9574700593948364
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9573863744735718
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.955140233039856
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9422960877418518
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9405993223190308
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9062231779098511
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8757385015487671
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8655043244361877
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8479093313217163
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8239395618438721
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7834967970848083
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5385597348213196
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5215775370597839
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4562229514122009
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.flipv.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.flipv.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659567475318909
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9647273421287537
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580127596855164
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9574700593948364
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9573863744735718
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.955140233039856
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9422960877418518
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9405993223190308
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9062231779098511
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8757385015487671
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8655043244361877
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8479093313217163
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8239395618438721
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7834967970848083
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5385597348213196
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5215775370597839
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4562229514122009
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9666879773139954
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9629238247871399
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580885767936707
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510824680328369
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502663016319275
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9496720433235168
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.948674738407135
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9453814625740051
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9233042597770691
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.910552442073822
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8974964022636414
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8959413766860962
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8849017024040222
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8551467061042786
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7155597805976868
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5790119171142578
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.36231961846351624
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.noise.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.noise.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9639270305633545
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9635664224624634
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9574289917945862
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9573342800140381
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9489029049873352
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9485600590705872
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9478970170021057
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9469379782676697
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9252024292945862
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9206125736236572
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.909338653087616
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8963634967803955
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8646886944770813
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8629486560821533
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.645904004573822
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.612359344959259
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.5219575762748718
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.45892423391342163
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.noise.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.noise.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9652189612388611
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9576578736305237
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9563668966293335
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.956305980682373
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477845430374146
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9471923112869263
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9467087388038635
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9449926614761353
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9219162464141846
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9187734127044678
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9055188298225403
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8828638792037964
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.868808388710022
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8686496615409851
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7433265447616577
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6973008513450623
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.47874149680137634
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.4235322177410126
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.noise.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.noise.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9639053344726562
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.963901698589325
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9569405913352966
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.956419050693512
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477372169494629
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9473897814750671
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472537040710449
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9450044631958008
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9299908876419067
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.919489860534668
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9076148867607117
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.888373613357544
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8717387914657593
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8638944029808044
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7020021080970764
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6303514838218689
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.49207353591918945
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.35948869585990906
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.rotate.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.rotate.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578983783721924
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9517984390258789
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9500751495361328
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9481905698776245
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9471556544303894
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.947046160697937
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9462780356407166
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9398977160453796
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9168689250946045
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8997217416763306
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8960824012756348
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8919506669044495
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8916787505149841
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.887523889541626
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8856273889541626
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8812271952629089
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8275558352470398
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8135029077529907
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.rotate.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.rotate.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9580140709877014
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9545153379440308
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9536192417144775
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9527490735054016
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9495663642883301
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9432483911514282
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9404600262641907
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9392788410186768
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9162184000015259
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8987271785736084
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8954514265060425
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8910524249076843
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8907725214958191
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8899664282798767
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8736977577209473
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8573465347290039
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8533076643943787
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.683620035648346
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_34_05_Pro.rotate.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_34_05_Pro.rotate.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9569934010505676
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9552438855171204
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546102285385132
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9542281031608582
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9538138508796692
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502183198928833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9487731456756592
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9434353113174438
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9174689650535583
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8979387879371643
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8968721032142639
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8883393406867981
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8661347031593323
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8645769357681274
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.860851526260376
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.828651487827301
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6791972517967224
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.47638627886772156
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.blur.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.blur.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.961600124835968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610888957977295
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9553066492080688
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9545349478721619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524323344230652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510650634765625
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502362608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477318525314331
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9327767491340637
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9153256416320801
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9118950963020325
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9091778993606567
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8987169861793518
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8851580023765564
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8742777705192566
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8548369407653809
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8439940810203552
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.blur.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.blur.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.961600124835968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610888957977295
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9553066492080688
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9545349478721619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524323344230652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510650634765625
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502362608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477318525314331
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9327767491340637
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9153256416320801
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9118950963020325
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9091778993606567
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8987169861793518
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8851580023765564
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8742777705192566
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8548369407653809
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8439940810203552
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.blur.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.blur.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.961600124835968
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9610888957977295
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9553066492080688
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9545349478721619
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524323344230652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9510650634765625
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9502362608909607
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9477318525314331
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9327767491340637
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9153256416320801
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9118950963020325
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9091778993606567
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8987169861793518
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8851580023765564
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8742777705192566
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8548369407653809
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8439940810203552
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.exposure.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.exposure.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962315022945404
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9620758891105652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9549601674079895
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546929001808167
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9515887498855591
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9507845044136047
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504285454750061
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472202658653259
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9333456158638
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9154939651489258
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9140759110450745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9078201651573181
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8910629153251648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8907660841941833
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8660457134246826
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8521926999092102
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8384063839912415
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.exposure.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.exposure.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962315022945404
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9620758891105652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9549601674079895
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546929001808167
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9515887498855591
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9507845044136047
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504285454750061
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472202658653259
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9333456158638
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9154939651489258
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9140759110450745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9078201651573181
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8910629153251648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8907660841941833
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8660457134246826
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8521926999092102
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8384063839912415
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.exposure.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.exposure.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962315022945404
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9620758891105652
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9549601674079895
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9546929001808167
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9515887498855591
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9507845044136047
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9504285454750061
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9472202658653259
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9333456158638
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9154939651489258
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9140759110450745
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9078201651573181
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8910629153251648
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8907660841941833
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8660457134246826
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8521926999092102
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8384063839912415
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.fliph.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.fliph.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9551796913146973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9516441226005554
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491936564445496
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491710066795349
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9478892087936401
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9475595355033875
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9474026560783386
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9408968091011047
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9162080883979797
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9155939817428589
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.911776602268219
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8999266028404236
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8974729776382446
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8665360808372498
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8663616180419922
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.847526490688324
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.842807412147522
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7187461256980896
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.fliph.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.fliph.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9551796913146973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9516441226005554
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491936564445496
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491710066795349
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9478892087936401
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9475595355033875
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9474026560783386
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9408968091011047
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9162080883979797
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9155939817428589
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.911776602268219
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8999266028404236
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8974729776382446
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8665360808372498
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8663616180419922
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.847526490688324
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.842807412147522
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7187461256980896
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.fliph.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.fliph.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9551796913146973
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9516441226005554
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491936564445496
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9491710066795349
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9478892087936401
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9475595355033875
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9474026560783386
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9408968091011047
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9162080883979797
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9155939817428589
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.911776602268219
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8999266028404236
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8974729776382446
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8665360808372498
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8663616180419922
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.847526490688324
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.842807412147522
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7187461256980896
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.flipv.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.flipv.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659040570259094
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642040729522705
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9581169486045837
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9579315781593323
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9577575922012329
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523885846138
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9458149671554565
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9445903897285461
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8938798308372498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8861271739006042
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8473376631736755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8329589366912842
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.828485369682312
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8266273140907288
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8157014846801758
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8038149476051331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7990747094154358
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.flipv.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.flipv.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659040570259094
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642040729522705
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9581169486045837
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9579315781593323
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9577575922012329
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523885846138
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9458149671554565
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9445903897285461
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8938798308372498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8861271739006042
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8473376631736755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8329589366912842
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.828485369682312
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8266273140907288
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8157014846801758
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8038149476051331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7990747094154358
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.flipv.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.flipv.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9659040570259094
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9642040729522705
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9581169486045837
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9579315781593323
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9577575922012329
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9523885846138
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9458149671554565
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9445903897285461
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8938798308372498
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8861271739006042
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8473376631736755
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8329589366912842
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.828485369682312
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8266273140907288
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8157014846801758
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8038149476051331
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.7990747094154358
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.961949348449707
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9609769582748413
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9553655385971069
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9543523192405701
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9525418281555176
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9511860609054565
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9503064751625061
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9476009607315063
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9322450160980225
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9151849150657654
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9114425182342529
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9092186689376831
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8972439169883728
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8817362189292908
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.871752917766571
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8575819134712219
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8442885875701904
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.noise.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.noise.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9591219425201416
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9577661156654358
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.955812394618988
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9532930254936218
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9520643949508667
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9520452618598938
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9470654129981995
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9440913200378418
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9335812926292419
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9174296855926514
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9045807719230652
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9045642018318176
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.896558940410614
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8824302554130554
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8714801073074341
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8655648827552795
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8461766839027405
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.3908606767654419
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.noise.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.noise.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9587957859039307
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.958024799823761
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9578455090522766
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9522920250892639
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9522072672843933
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9515082240104675
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9463622570037842
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9430655837059021
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9211547374725342
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9165313243865967
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9097791910171509
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9015586972236633
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8999783992767334
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8928427696228027
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8590090274810791
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8570470213890076
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8430560231208801
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.noise.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.noise.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.9608534574508667
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9576059579849243
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9564248323440552
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9524195790290833
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9522945284843445
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9509347081184387
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9465851187705994
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.945349931716919
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9326894283294678
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9127088189125061
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9061979055404663
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.906169056892395
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9023734331130981
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8977946639060974
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8718785047531128
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8609428405761719
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8461516499519348
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.rotate.aug0.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.rotate.aug0.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.957655668258667
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9568873047828674
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9540852904319763
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9538981318473816
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9520065784454346
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.950241208076477
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9464274048805237
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9456274509429932
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.918575644493103
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9150457978248596
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8992637991905212
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.888824462890625
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8872469067573547
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.853797972202301
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8401318192481995
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8359572887420654
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6868934631347656
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.rotate.aug1.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.rotate.aug1.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.962367832660675
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9598416686058044
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.957512378692627
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9519423246383667
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9487709999084473
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9457003474235535
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9443326592445374
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9406956434249878
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9260736703872681
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9049509167671204
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8773712515830994
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.8716419339179993
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8669711351394653
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.864508330821991
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8412862420082092
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.7875961661338806
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6095297336578369
+        }
+      ]
+    },
+    {
+      "name": "WIN_20260710_23_36_54_Pro.rotate.aug2.jpg",
+      "image": "C:\\Users\\LAB-AI-05\\Desktop\\TA36\\AutomaEye\\projects\\SH1160\\models\\Socket Measurement\\eval\\20260729-093801\\pred\\WIN_20260710_23_36_54_Pro.rotate.aug2.jpg",
+      "detections": [
+        {
+          "name": "jarak_tab",
+          "conf": 0.960589587688446
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.959187388420105
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9564730525016785
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9533025026321411
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9525789022445679
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.952389121055603
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.9457007646560669
+        },
+        {
+          "name": "jarak_tab",
+          "conf": 0.941470205783844
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9256446957588196
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.9203882217407227
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.9157801270484924
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8966597318649292
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.883560836315155
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8775758743286133
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.8646508455276489
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.855560839176178
+        },
+        {
+          "name": "tinggi_tab",
+          "conf": 0.6702948808670044
+        },
+        {
+          "name": "lubang_besar",
+          "conf": 0.3690203130245209
+        }
+      ]
+    }
+  ],
+  "generatedAt": "20260729-093801"
+}
