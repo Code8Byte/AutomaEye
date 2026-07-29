@@ -91,6 +91,7 @@ function createWindow() {
             contextIsolation: true,
             nodeIntegration: false,
             webviewTag: true, // enable <webview> untuk embed Label Studio
+            backgroundThrottling: false, // JANGAN throttle loop/kamera saat window tak fokus
         },
     });
     mainWindow.setMenuBarVisibility(false);
@@ -572,6 +573,23 @@ ipcMain.handle('nvidia:report', async (_, { project, date }) => {
     return r;
 });
 ipcMain.handle('file:open', (_, p) => shell.openPath(p));
+
+// Excel data deteksi: 1 baris/part (ID, link gambar, Kotak 1-8 P×L, Lubang 1-6 Ø, waktu deteksi).
+ipcMain.handle('report:detectionXlsx', (_, { project, date }) => {
+    try {
+        const xlsxlite = require('./lib/xlsxlite');
+        const detreport = require('./lib/detreport');
+        const p = projects.load(projectsRoot, project);
+        const { rows, count, dir } = detreport.buildRows(p.dir, date, { nBox: 8, nHole: 6 });
+        const outDir = path.join(p.dir, 'outputs');
+        fs.mkdirSync(outDir, { recursive: true });
+        const outPath = path.join(outDir, `deteksi_${date}.xlsx`);
+        xlsxlite.write(outPath, 'Deteksi', rows);
+        return { ok: true, xlsxPath: outPath, count, dir };
+    } catch (e) {
+        return { ok: false, error: e.message };
+    }
+});
 ipcMain.handle('nvidia:analyze', (_, { project, date }) =>
     nvidia.analyzeNG(cfg, projectsRoot, project, date));
 ipcMain.handle('nvidia:chat', (_, { messages }) =>

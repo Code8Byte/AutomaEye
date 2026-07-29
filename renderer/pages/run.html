@@ -19,10 +19,14 @@
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
         <a class="back" id="backLink">← Project</a>
         <div class="row">
+            <select id="camSelect" onchange="onCamPick()" title="Pilih kamera (UVC / webcam)" style="max-width:200px"></select>
+            <button class="btn" onclick="loadCameras(true)" id="camRefreshBtn" title="Muat ulang daftar kamera">⟳</button>
             <button class="btn primary" onclick="startCam()" id="startBtn">▶ Start Camera</button>
             <button class="btn" onclick="capture()" id="captureBtn" disabled>📷 Capture & Inspect</button>
             <button class="btn" onclick="toggleLive()" id="liveBtn" disabled>🔴 Live</button>
             <button class="btn danger" onclick="stopCam()" id="stopBtn" disabled>⏹ Stop</button>
+            <button class="btn" onclick="sendGate('open')" id="openGateBtn" title="Uji kirim 'O' ke Arduino (buka gate)">🔓 Open</button>
+            <button class="btn" onclick="sendGate('close')" id="closeGateBtn" title="Uji kirim 'C' ke Arduino (tutup gate)">🔒 Close</button>
         </div>
     </div>
 
@@ -182,6 +186,8 @@ async function init() {
     renderPalette();
     refreshArduinoStatus();
     loadPorts();
+    loadCameras();
+    navigator.mediaDevices.addEventListener('devicechange', () => loadCameras());
     setInterval(refreshArduinoStatus, 5000);
 }
 
@@ -231,10 +237,57 @@ function renderPalette(latestResult) {
 
 // Constraint kamera yang tahan-banting: pakai 'ideal' (bukan 'exact') supaya webcam
 // murah tidak gagal, kunci ke deviceId yang sama, dan batasi frameRate.
+function selectedCamId() {
+    const sel = document.getElementById('camSelect');
+    const v = sel && sel.value ? sel.value : (camDeviceId || '');
+    return (v && v !== 'default') ? v : '';
+}
 async function camConstraints() {
-    const v = { width: { ideal: 1280 }, height: { ideal: 720 }, frameRate: { ideal: 30 } };
-    if (camDeviceId) v.deviceId = { ideal: camDeviceId };
+    const v = { width: { ideal: 1280 }, height: { ideal: 720 } };  // TANPA frameRate: hindari mode crop/zoom pada kamera UVC
+    const id = selectedCamId();
+    if (id) v.deviceId = { exact: id };   // PAKSA kamera yang dipilih (mis. UVC) — bukan default webcam
     return { video: v, audio: false };
+}
+
+// Enumerasi kamera → isi dropdown. Prioritas: tersimpan → UVC/USB → non-built-in → pertama.
+async function loadCameras(userAction) {
+    try {
+        // Label device baru muncul setelah izin diberikan; minta izin sekali bila perlu.
+        if (userAction) {
+            try { (await navigator.mediaDevices.getUserMedia({ video: true })).getTracks().forEach(t => t.stop()); } catch {}
+        }
+        const cams = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'videoinput');
+        const sel = document.getElementById('camSelect');
+        if (!sel) return;
+        const saved = localStorage.getItem('automaeyes.camId') || camDeviceId || '';
+        sel.innerHTML = '';
+        if (!cams.length) {
+            const o = document.createElement('option'); o.value = ''; o.textContent = '(kamera tidak ditemukan)';
+            sel.appendChild(o); return;
+        }
+        cams.forEach((c, i) => {
+            const o = document.createElement('option');
+            o.value = c.deviceId; o.textContent = c.label || `Kamera ${i + 1}`;
+            sel.appendChild(o);
+        });
+        let pick = (saved && cams.some(c => c.deviceId === saved)) ? saved : '';
+        if (!pick) {
+            const uvc = cams.find(c => /uvc|usb|cam ?link|capture|external|hd ?cam/i.test(c.label));
+            const nonBuiltin = cams.find(c => !/integrated|built-?in|facetime|internal/i.test(c.label));
+            pick = (uvc || nonBuiltin || cams[0]).deviceId;
+        }
+        sel.value = pick; camDeviceId = pick;
+    } catch (e) { console.warn('enumerate cameras:', e.message); }
+}
+function onCamPick() {
+    const sel = document.getElementById('camSelect');
+    camDeviceId = sel ? sel.value : camDeviceId;
+    if (camDeviceId) localStorage.setItem('automaeyes.camId', camDeviceId);
+    if (stream) {   // kamera sedang jalan → pindah ke device yang dipilih
+        const wasLive = live;
+        stopCam();
+        setTimeout(() => startCam().then(() => { if (wasLive) toggleLive(); }), 250);
+    }
 }
 
 function attachTrackGuards() {
@@ -262,7 +315,12 @@ async function startCam() {
         document.getElementById('liveBtn').disabled = false;
         document.getElementById('stopBtn').disabled = false;
         startCamWatchdog();
-    } catch (e) { alert('Camera error: ' + e.message); }
+        loadCameras();   // refresh label device (kini tersedia setelah izin) tanpa ubah pilihan
+    } catch (e) {
+        // Bila device yang dipilih tak tersedia (exact gagal), beri tahu & muat ulang daftar.
+        alert('Camera error: ' + e.message + '\nCoba pilih kamera lain dari dropdown.');
+        loadCameras();
+    }
 }
 
 // ---- Pemulihan kamera otomatis (anti black-screen / kamera ter-drop) ----
@@ -340,8 +398,10 @@ async function liveLoop() {
     const t0 = performance.now();
     await inspectFrame();
     if (!live) return;
+    // Pakai setTimeout MURNI (bukan requestAnimationFrame) — rAF di-throttle jadi ~1fps
+    // saat window tak fokus, membuat loop nyaris berhenti. setTimeout tetap jalan.
     const wait = Math.max(LIVE_MIN_CYCLE_MS - (performance.now() - t0), 8);
-    liveTimer = setTimeout(() => { if (live) requestAnimationFrame(liveLoop); }, wait);
+    liveTimer = setTimeout(liveLoop, wait);
 }
 function updateFps(cycleMs, result) {
     fpsSamples.push(cycleMs); if (fpsSamples.length > 8) fpsSamples.shift();
@@ -439,6 +499,10 @@ function toggleLive() {
         // video tetap tampil; snapView (frame beku) disembunyikan supaya tidak menutupi video live
         const sv = document.getElementById('snapView'); if (sv) sv.style.display = 'none';
         document.getElementById('cam').style.display = 'block';
+        // Reset state tracking supaya Live yang di-start ULANG selalu menampilkan deteksi lagi
+        // (measureResult sisa dari sesi sebelumnya bisa menutup gambar presence).
+        trackCurrent = null; measureResult = null; measureFrame = null; trackAbsent = 0; busy = false;
+        const lo2 = document.getElementById('liveOverlay'); if (lo2) lo2.style.display = 'block';
         liveLoop();                              // mulai loop kontinu (self-scheduling)
     } else {
         btn.textContent = '🔴 Live';
@@ -749,7 +813,8 @@ async function handleTracking(lite, dataUrl, confVal) {
     const present = presencePresent(lite);
     const box = present ? presenceBox(lite) : null;
     const exitN = Math.max(1, parseInt(document.getElementById('exitFrames').value) || 2);
-    const settleN = Math.max(1, parseInt((document.getElementById('settleFrames') || {}).value) || 3);
+    // Dibatasi 1–2 frame supaya inspeksi & sinyal 'O' cepat menembak (tidak menunggu lama).
+    const settleN = Math.min(2, Math.max(1, parseInt((document.getElementById('settleFrames') || {}).value) || 1));
 
     if (present && box) {
         trackAbsent = 0;
@@ -761,19 +826,16 @@ async function handleTracking(lite, dataUrl, confVal) {
             logEvent(`Object Detector: <strong>presence</strong> → tandai <strong>Part #${trackPartCounter}</strong> (menunggu berhenti)`, 'in');
             updatePartInfo();
         } else {
-            // PART SAMA (lanjutan) — cek apakah sudah diam.
-            const moved = boxCenterMove(trackCurrent.box, box);
+            // PART SAMA — hitung berapa frame ia tampil (stabilisasi ringan; TIDAK
+            // tergantung gerak kotak yang bisa bergetar & menahan inspeksi selamanya).
             trackCurrent.box = box;
-            if (moved > MOVE_THRESH) trackCurrent.stable = 0;   // masih bergerak/jatuh
-            else trackCurrent.stable++;                          // diam bertambah
+            trackCurrent.stable++;
         }
-        // Inspeksi setelah part DIAM. Kalau jumlah fitur (n) belum lengkap → ULANGI
-        // tiap frame sampai lengkap (menyerah setelah ~12x → finalize sbg NG).
+        // Inspeksi SATU KALI per part → langsung finalize & kirim sinyal gate.
+        // (Logika "menunggu n lengkap" / tunggu-diam ketat sudah dihapus.)
         if (trackCurrent && !trackCurrent.inspected && trackCurrent.stable >= settleN) {
-            trackCurrent.tries = (trackCurrent.tries || 0) + 1;
-            const force = trackCurrent.tries >= 12;
-            const done = await inspectPart(dataUrl, confVal, force);
-            if (done) trackCurrent.inspected = true;
+            trackCurrent.inspected = true;
+            await inspectPart(dataUrl, confVal, true);
         }
     } else if (trackCurrent) {
         trackAbsent++;
@@ -805,18 +867,9 @@ async function inspectPart(dataUrl, confVal, force) {
     try { full = await window.api.inspect(projectName, mframe, { confidence: confVal, light: false, noSignal: true, noSave: true, imgsz: isNaN(mImg) ? undefined : mImg, measureFromBox: measBox }); }
     catch (_) { }
     const inspStep = (full.steps || []).find(s => s.category === 'Inspection' && !s.skipped);
-    const incomplete = !!(inspStep && inspStep.incomplete);
-    // Selalu tampilkan overlay (partial atau lengkap).
+    // Langsung tampilkan overlay & finalize — tanpa logika "menunggu fitur lengkap".
     measureResult = full; measureFrame = mframe; lastFull = full;
     drawTracking(full); renderStepsAndSL(full);
-
-    if (incomplete && !force) {
-        // Belum lengkap → JANGAN finalize. Tunggu & ulangi frame berikutnya.
-        if (trackCurrent) trackCurrent.verdict = 'WAIT';
-        updatePartInfo();
-        logEvent(`Part #${trackCurrent ? trackCurrent.id : '?'} menunggu fitur lengkap — ${esc((inspStep && inspStep.reason) || '')}`, 'sig');
-        return false;
-    }
 
     // LENGKAP (atau menyerah) → finalize: hitung, foto NG, sinyal.
     const verdict = full.finalVerdict;

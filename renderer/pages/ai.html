@@ -25,7 +25,8 @@
                 <div style="padding:12px">
                     <label>Tanggal <input type="date" id="dateR"></label>
                     <button class="btn primary" onclick="generateReport()">Generate Report</button>
-                    <button class="btn" id="openXlsxBtn" style="display:none" onclick="openXlsx()">📊 Buka XLSX</button>
+                    <button class="btn primary" onclick="generateDetExcel()">📊 Generate Excel Deteksi</button>
+                    <button class="btn" id="openXlsxBtn" style="display:none" onclick="openXlsx()">📂 Buka XLSX</button>
                     <p class="muted" id="statusR"></p>
                 </div>
             </div>
@@ -100,6 +101,28 @@ async function generateReport() {
     }
 }
 function openXlsx() { if (lastXlsxPath) window.api.openPath(lastXlsxPath); }
+
+// Generate Excel data deteksi (ID · link gambar · Kotak 1-8 P×L · Lubang 1-6 Ø · waktu deteksi).
+async function generateDetExcel() {
+    const date = document.getElementById('dateR').value;
+    if (!date) { document.getElementById('statusR').textContent = 'Pilih tanggal dulu.'; return; }
+    document.getElementById('statusR').textContent = 'Membuat Excel deteksi…';
+    document.getElementById('openXlsxBtn').style.display = 'none';
+    try {
+        const r = await window.api.reportDetectionXlsx(projectName, date);
+        if (r && r.ok) {
+            lastXlsxPath = r.xlsxPath;
+            document.getElementById('openXlsxBtn').style.display = '';
+            document.getElementById('reportOut').textContent =
+                `Excel deteksi dibuat: ${r.count} part dari ${r.dir}\n\nKolom: ID · link gambar · Verdict · Kotak 1-8 (Panjang, Lebar) · Lubang 1-6 (Ø) · Waktu Deteksi (ms).\nFitur yang tidak terdeteksi dibiarkan kosong pada slot posisinya.`;
+            document.getElementById('statusR').textContent = `✓ ${r.count} part → ${r.xlsxPath}`;
+        } else {
+            document.getElementById('statusR').textContent = 'Gagal: ' + ((r && r.error) || 'tidak diketahui');
+        }
+    } catch (e) {
+        document.getElementById('statusR').textContent = 'Error: ' + e.message;
+    }
+}
 
 async function analyzeNG() {
     const date = document.getElementById('dateA').value;

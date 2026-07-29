@@ -1,0 +1,58 @@
+{
+  "seq": 67,
+  "timestamp": "2026-07-15T03:43:23.276Z",
+  "finalVerdict": "NG",
+  "totalMS": 675,
+  "steps": [
+    {
+      "stepIndex": 1,
+      "category": "Capture",
+      "label": "Kamera / Webcam",
+      "verdict": "OK",
+      "confidence": 0,
+      "reason": "Sumber: kamera · gambar 59KB diterima",
+      "stepMS": 0
+    },
+    {
+      "stepIndex": 2,
+      "category": "Positioning",
+      "modelName": "Object Detector",
+      "label": "Object Detector",
+      "verdict": "OK",
+      "confidence": 0.6598578691482544,
+      "detections": [
+        {
+          "x1": 439.3952941894531,
+          "y1": 339.58197021484375,
+          "x2": 1062.71533203125,
+          "y2": 720,
+          "confidence": 0.6598578691482544,
+          "class_id": 0,
+          "class_name": "object"
+        }
+      ],
+      "reason": "Part terkunci di (751, 530)",
+      "stepMS": 312
+    },
+    {
+      "stepIndex": 3,
+      "category": "Inspection",
+      "modelName": "Measurement",
+      "label": "Measurement",
+      "verdict": "NG",
+      "confidence": 0,
+      "detections": [],
+      "checks": [
+        {
+          "addon": "GD&T",
+          "pass": false,
+          "detail": "Tidak ada objek untuk diukur"
+        }
+      ],
+      "incomplete": false,
+      "reason": "GD&T: Tidak ada objek untuk diukur",
+      "stepMS": 363
+    }
+  ],
+  "image": "067-1043.jpg"
+}

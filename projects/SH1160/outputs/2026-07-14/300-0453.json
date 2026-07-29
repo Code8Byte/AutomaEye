@@ -1,0 +1,86 @@
+{
+  "seq": 300,
+  "timestamp": "2026-07-14T21:53:47.209Z",
+  "finalVerdict": "NG",
+  "totalMS": 795,
+  "steps": [
+    {
+      "stepIndex": 1,
+      "category": "Capture",
+      "label": "Kamera / Webcam",
+      "verdict": "OK",
+      "confidence": 0,
+      "reason": "Sumber: kamera · gambar 63KB diterima",
+      "stepMS": 0
+    },
+    {
+      "stepIndex": 2,
+      "category": "Positioning",
+      "modelName": "Object Detector",
+      "label": "Object Detector",
+      "verdict": "OK",
+      "confidence": 0.3574855923652649,
+      "detections": [
+        {
+          "x1": 0.09033203125,
+          "y1": 0,
+          "x2": 604.1461181640625,
+          "y2": 476.4372863769531,
+          "confidence": 0.3574855923652649,
+          "class_id": 0,
+          "class_name": "object"
+        }
+      ],
+      "reason": "Part terkunci di (302, 238)",
+      "stepMS": 282
+    },
+    {
+      "stepIndex": 3,
+      "category": "Inspection",
+      "modelName": "Socket Measurement",
+      "label": "Socket Measurement",
+      "verdict": "NG",
+      "confidence": 0.516511857509613,
+      "detections": [
+        {
+          "x1": 1262.762939453125,
+          "y1": 574.4652709960938,
+          "x2": 1280,
+          "y2": 641.0081176757812,
+          "confidence": 0.516511857509613,
+          "class_id": 3,
+          "class_name": "jarak_tab",
+          "measure": {
+            "diameterPx": 20.223949432373047,
+            "widthPx": 3,
+            "heightPx": 20,
+            "areaPx": 46
+          },
+          "gdt": [
+            {
+              "text": "1.81",
+              "ok": false,
+              "kind": "long"
+            },
+            {
+              "text": "0.27",
+              "ok": false,
+              "kind": "short"
+            }
+          ]
+        }
+      ],
+      "checks": [
+        {
+          "addon": "GD&T",
+          "pass": false,
+          "detail": "jarak_tab long=1.81mm ✗(17±0.3) · jarak_tab short=0.27mm ✗(7.8±0.3)"
+        }
+      ],
+      "incomplete": false,
+      "reason": "GD&T: jarak_tab long=1.81mm ✗(17±0.3) · jarak_tab short=0.27mm ✗(7.8±0.3)",
+      "stepMS": 513
+    }
+  ],
+  "image": "300-0453.jpg"
+}

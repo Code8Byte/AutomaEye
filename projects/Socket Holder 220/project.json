@@ -1,0 +1,11 @@
+{
+  "name": "Socket Holder 220",
+  "description": "",
+  "createdAt": "2026-07-15T03:38:29.947Z",
+  "updatedAt": "2026-07-15T03:38:29.949Z",
+  "models": [],
+  "workflow": {
+    "steps": [],
+    "onFirstNG": "stop_and_report"
+  }
+}
