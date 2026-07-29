@@ -366,7 +366,16 @@
                             <div class="mcard"><div class="mc-label">mAP@50-95</div><div class="mc-val" id="evMap95">—</div></div>
                             <div class="mcard"><div class="mc-label">Precision</div><div class="mc-val" id="evP">—</div></div>
                             <div class="mcard"><div class="mc-label">Recall</div><div class="mc-val" id="evR">—</div></div>
+                            <div class="mcard"><div class="mc-label">Waktu Inferensi</div><div class="mc-val" id="evMs">—</div></div>
                         </div>
+
+                        <h4 style="margin-top:14px">Waktu Inferensi per Gambar (Edge Computing)</h4>
+                        <p class="muted" id="evDevice" style="margin:2px 0 6px"></p>
+                        <table class="table" id="evTimeTable">
+                            <thead><tr><th>Tahap</th><th>Rerata (ms)</th><th>Median (ms)</th><th>Min (ms)</th><th>Maks (ms)</th><th>Simpangan Baku (ms)</th></tr></thead>
+                            <tbody></tbody>
+                        </table>
+                        <p class="muted" id="evTimeNote" style="margin-top:4px"></p>
 
                         <h4 style="margin-top:14px">Metrik per-kelas</h4>
                         <table class="table" id="evTable"><thead><tr><th>Kelas</th><th>Precision</th><th>Recall</th><th>mAP@50</th><th>mAP@50-95</th></tr></thead><tbody></tbody></table>
@@ -992,6 +1001,8 @@ function renderEval(res) {
     document.getElementById('evP').textContent = _pe(o.precision);
     document.getElementById('evR').textContent = _pe(o.recall);
 
+    renderEvalTiming(res.timing);
+
     const tb = document.querySelector('#evTable tbody');
     tb.innerHTML = (res.perClass || []).map(c =>
         `<tr><td>${esc(c.name)}</td><td>${_pe(c.precision)}</td><td>${_pe(c.recall)}</td><td>${_pe(c.map50)}</td><td>${_pe(c.map5095)}</td></tr>`
@@ -1014,8 +1025,49 @@ function renderEval(res) {
         const det = (pr.detections && pr.detections.length)
             ? pr.detections.map(d => `${esc(d.name)} ${(d.conf * 100).toFixed(0)}%`).join(', ')
             : '(tidak ada deteksi)';
-        return `<div class="gp"><img src="file://${pr.image.replace(/\\/g, '/')}"><div class="cap">${esc(pr.name)}<br>${det}</div></div>`;
+        const ms = pr.ms ? `<br><b>${pr.ms.total} ms</b> (inferensi ${pr.ms.inference} ms)` : '';
+        return `<div class="gp"><img src="file://${pr.image.replace(/\\/g, '/')}"><div class="cap">${esc(pr.name)}${ms}<br>${det}</div></div>`;
     }).join('') || '<p class="muted">Tidak ada gambar di split ini.</p>';
+}
+
+// Waktu inferensi per gambar -> kartu, tabel per tahap, dan info perangkat.
+function renderEvalTiming(t) {
+    const card = document.getElementById('evMs');
+    const devEl = document.getElementById('evDevice');
+    const body = document.querySelector('#evTimeTable tbody');
+    const note = document.getElementById('evTimeNote');
+    if (!t || !t.perStage) {
+        card.textContent = '—';
+        devEl.textContent = '';
+        body.innerHTML = '<tr><td colspan="6" class="muted">Data waktu tidak tersedia. Jalankan ulang Test.</td></tr>';
+        note.textContent = '';
+        return;
+    }
+    const s = t.perStage;
+    card.textContent = `${s.total.mean} ms`;
+
+    const d = t.device || {};
+    const dev = d.device === 'cuda' ? `GPU (${d.gpu || 'CUDA'})` : 'CPU';
+    const bits = [`Perangkat inferensi: <b>${esc(dev)}</b>`];
+    if (d.cpu) bits.push(`CPU: ${esc(d.cpu)}`);
+    if (d.ram_gb) bits.push(`RAM: ${d.ram_gb} GB`);
+    if (d.torch) bits.push(`PyTorch ${esc(d.torch)}`);
+    bits.push(`imgsz ${t.imgsz}`, `conf ${t.conf}`, `IoU ${t.iou}`);
+    devEl.innerHTML = bits.join(' · ');
+
+    const rows = [
+        ['Preprocess', s.preprocess],
+        ['Inference (model)', s.inference],
+        ['Postprocess (NMS)', s.postprocess],
+        ['<b>Total per gambar</b>', s.total],
+    ];
+    body.innerHTML = rows.map(([label, v]) =>
+        `<tr><td>${label}</td><td>${v.mean}</td><td>${v.median}</td><td>${v.min}</td><td>${v.max}</td><td>${v.std}</td></tr>`
+    ).join('');
+
+    note.textContent =
+        `n = ${t.nMeasured} gambar terukur dari ${t.nImages} gambar · cold-start gambar pertama ${t.coldStartMs} ms (tidak dihitung) · `
+        + `throughput ≈ ${t.throughputPerMinute} gambar/menit (${t.fps} FPS).`;
 }
 
 function openEvalDir() { if (lastEval && lastEval.savedDir) window.api.openEvalDir(lastEval.savedDir); }
@@ -1026,10 +1078,25 @@ function exportEvalCsv() {
     const o = lastEval.overall || {};
     rows.push(['overall', 'ALL', o.precision, o.recall, o.map50, o.map5095, o.f1]);
     (lastEval.perClass || []).forEach(c => rows.push(['class', c.name, c.precision, c.recall, c.map50, c.map5095, '']));
+
+    const t = lastEval.timing;
+    if (t && t.perStage) {
+        const d = t.device || {};
+        rows.push([]);
+        rows.push(['timing', 'stage', 'mean_ms', 'median_ms', 'min_ms', 'max_ms', 'std_ms']);
+        [['preprocess', t.perStage.preprocess], ['inference', t.perStage.inference],
+         ['postprocess', t.perStage.postprocess], ['total', t.perStage.total]]
+            .forEach(([k, v]) => rows.push(['timing', k, v.mean, v.median, v.min, v.max, v.std]));
+        rows.push(['timing', 'n_measured', t.nMeasured, 'n_images', t.nImages, 'cold_start_ms', t.coldStartMs]);
+        rows.push(['timing', 'throughput_per_min', t.throughputPerMinute, 'fps', t.fps, 'imgsz', t.imgsz]);
+        rows.push(['device', d.device || '', d.cpu || '', d.gpu || '', d.ram_gb || '', 'torch', d.torch || '']);
+    }
+
     rows.push([]);
-    rows.push(['prediction', 'image', 'detections']);
+    rows.push(['prediction', 'image', 'detections', 'total_ms', 'inference_ms']);
     (lastEval.predictions || []).forEach(p =>
-        rows.push(['pred', p.name, (p.detections || []).map(d => `${d.name}:${(d.conf * 100).toFixed(0)}%`).join(' | ')]));
+        rows.push(['pred', p.name, (p.detections || []).map(d => `${d.name}:${(d.conf * 100).toFixed(0)}%`).join(' | '),
+                   p.ms ? p.ms.total : '', p.ms ? p.ms.inference : '']));
     const csv = rows.map(r => r.map(v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`).join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const a = document.createElement('a');

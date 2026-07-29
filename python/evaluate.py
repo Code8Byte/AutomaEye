@@ -12,9 +12,49 @@ Semua disimpan ke <model>/eval/<timestamp>/ dan hasilnya di-print sebagai:
 import argparse
 import glob
 import json
+import statistics
 import sys
 import time
 from pathlib import Path
+
+
+def stat_block(vals):
+    """Ringkasan statistik satu daftar waktu (ms). Dipakai untuk laporan edge computing."""
+    vals = [float(v) for v in vals if v is not None]
+    if not vals:
+        return {"n": 0, "mean": 0.0, "median": 0.0, "min": 0.0, "max": 0.0, "std": 0.0}
+    return {
+        "n": len(vals),
+        "mean": round(statistics.fmean(vals), 2),
+        "median": round(statistics.median(vals), 2),
+        "min": round(min(vals), 2),
+        "max": round(max(vals), 2),
+        "std": round(statistics.pstdev(vals), 2) if len(vals) > 1 else 0.0,
+    }
+
+
+def device_info():
+    """Spesifikasi perangkat yang menjalankan inferensi (untuk Tabel spesifikasi PC di laporan)."""
+    info = {"device": "cpu", "cpu": "", "gpu": "", "ram_gb": None, "torch": ""}
+    try:
+        import platform
+        info["cpu"] = platform.processor() or platform.machine()
+    except Exception:
+        pass
+    try:
+        import torch
+        info["torch"] = torch.__version__
+        if torch.cuda.is_available():
+            info["device"] = "cuda"
+            info["gpu"] = torch.cuda.get_device_name(0)
+    except Exception:
+        pass
+    try:
+        import psutil
+        info["ram_gb"] = round(psutil.virtual_memory().total / (1024 ** 3), 1)
+    except Exception:
+        pass
+    return info
 
 
 def find_plot(d, *patterns):
@@ -125,26 +165,66 @@ def main():
     print("PROGRESS 2/3 prediksi gambar", flush=True)
     preds = []
     src_dir = ds_dir / "images" / split
+    t_pre, t_inf, t_post, t_tot, t_wall = [], [], [], [], []
+    coldstart_ms = 0.0
     try:
         results = model.predict(
             source=str(src_dir), save=True, project=str(run_dir), name="pred",
             conf=a.conf, iou=a.iou, imgsz=a.imgsz, verbose=False, exist_ok=True,
         )
-        for r in results:
+        for idx, r in enumerate(results):
             dets = []
             if r.boxes is not None:
                 for bx in r.boxes:
                     ci = int(bx.cls[0])
                     dets.append({"name": names.get(ci, str(ci)), "conf": float(bx.conf[0])})
+            # --- waktu proses per gambar (ms) dari ultralytics ---
+            sp = getattr(r, "speed", None) or {}
+            pre = float(sp.get("preprocess", 0) or 0)
+            inf = float(sp.get("inference", 0) or 0)
+            post = float(sp.get("postprocess", 0) or 0)
+            tot = pre + inf + post
+            if idx == 0:
+                coldstart_ms = round(tot, 2)
+            else:
+                t_pre.append(pre); t_inf.append(inf); t_post.append(post); t_tot.append(tot)
             src = Path(r.path)
             saved = Path(r.save_dir) / src.name
             preds.append({
                 "name": src.name,
                 "image": str(saved.resolve()) if saved.exists() else str(src.resolve()),
                 "detections": dets,
+                "ms": {"preprocess": round(pre, 2), "inference": round(inf, 2),
+                       "postprocess": round(post, 2), "total": round(tot, 2)},
             })
     except Exception as e:
         print(f"[!] predict gagal: {e}", flush=True)
+
+    # Bila hanya ada 1 gambar, jangan sampai statistik kosong.
+    if not t_tot and preds:
+        m = preds[0]["ms"]
+        t_pre, t_inf, t_post, t_tot = [m["preprocess"]], [m["inference"]], [m["postprocess"]], [m["total"]]
+
+    tot_stat = stat_block(t_tot)
+    timing = {
+        "device": device_info(),
+        "imgsz": a.imgsz,
+        "conf": a.conf,
+        "iou": a.iou,
+        "nImages": len(preds),
+        "nMeasured": tot_stat["n"],
+        "coldStartMs": coldstart_ms,
+        "note": "Gambar pertama (cold-start pemuatan model) dikeluarkan dari statistik.",
+        "perStage": {
+            "preprocess": stat_block(t_pre),
+            "inference": stat_block(t_inf),
+            "postprocess": stat_block(t_post),
+            "total": tot_stat,
+        },
+        "throughputPerMinute": round(60000.0 / tot_stat["mean"], 1) if tot_stat["mean"] > 0 else 0.0,
+        "fps": round(1000.0 / tot_stat["mean"], 2) if tot_stat["mean"] > 0 else 0.0,
+        "valSpeed": {k: round(float(v), 2) for k, v in (getattr(val, "speed", None) or {}).items()},
+    }
 
     result = {
         "split": split,
@@ -152,6 +232,7 @@ def main():
         "overall": overall,
         "perClass": per_class,
         "plots": plots,
+        "timing": timing,
         "predictions": preds,
         "generatedAt": stamp,
     }
