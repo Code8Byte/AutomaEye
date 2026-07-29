@@ -1093,10 +1093,11 @@ function exportEvalCsv() {
     }
 
     rows.push([]);
-    rows.push(['prediction', 'image', 'detections', 'total_ms', 'inference_ms']);
+    rows.push(['prediction', 'image', 'detections', 'preprocess_ms', 'inference_ms', 'postprocess_ms', 'total_ms']);
     (lastEval.predictions || []).forEach(p =>
         rows.push(['pred', p.name, (p.detections || []).map(d => `${d.name}:${(d.conf * 100).toFixed(0)}%`).join(' | '),
-                   p.ms ? p.ms.total : '', p.ms ? p.ms.inference : '']));
+                   p.ms ? p.ms.preprocess : '', p.ms ? p.ms.inference : '',
+                   p.ms ? p.ms.postprocess : '', p.ms ? p.ms.total : '']));
     const csv = rows.map(r => r.map(v => `"${String(v == null ? '' : v).replace(/"/g, '""')}"`).join(',')).join('\n');
     const blob = new Blob([csv], { type: 'text/csv' });
     const a = document.createElement('a');
