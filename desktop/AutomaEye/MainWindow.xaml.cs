@@ -372,6 +372,21 @@ public partial class MainWindow : System.Windows.Window
         OpenProject(_current.Name);
     }
 
+    private void TestModel_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null || sender is not Button { Tag: string name }) return;
+        var model = _current.FindModel(name);
+        if (model == null) return;
+        if (!model.Trained)
+        {
+            MessageBox.Show("Train this model first.", "AutomaEye");
+            return;
+        }
+
+        var dialog = new EvaluateDialog(model) { Owner = this };
+        dialog.ShowDialog();
+    }
+
     private async void AugmentModel_Click(object sender, RoutedEventArgs e)
     {
         if (_current == null || sender is not Button { Tag: string name } button) return;

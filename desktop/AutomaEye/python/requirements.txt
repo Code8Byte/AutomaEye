@@ -3,3 +3,5 @@ opencv-python
 pillow
 torch
 onnx
+pyyaml
+psutil
