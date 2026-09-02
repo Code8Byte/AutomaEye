@@ -1,8 +1,11 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using AutomaEye.Models;
 using AutomaEye.Services;
 
@@ -21,6 +24,7 @@ public partial class TrainDialog : System.Windows.Window
     private readonly Model _model;
     private readonly TrainingService _training = new();
     private CancellationTokenSource? _cts;
+    private readonly System.Collections.Generic.List<EpochMetrics> _history = new();
 
     public TrainDialog(ProjectManager mgr, Project project, Model model)
     {
@@ -61,7 +65,88 @@ public partial class TrainDialog : System.Windows.Window
         if (m.MAP50 > 0 || m.Precision > 0)
         {
             MetricsText.Text = $"mAP50 {m.MAP50:F3}  mAP50-95 {m.MAP5095:F3}  P {m.Precision:F3}  R {m.Recall:F3}  F1 {m.F1:F3}";
+
+            // EPOCH_METRICS lines only carry real numbers once validation has
+            // run for that epoch (mAP/precision > 0) - the plain
+            // PROGRESS_EPOCH tick can fire first with everything zeroed.
+            if (_history.Count == 0 || _history[^1].Epoch != m.Epoch)
+                _history.Add(m);
+            else
+                _history[^1] = m;
+
+            DrawChart(MapChartCanvas, new (List<double>, Brush)[]
+            {
+                (_history.Select(h => (double)h.MAP50).ToList(), Brushes.LimeGreen),
+                (_history.Select(h => (double)h.MAP5095).ToList(), Brushes.DodgerBlue),
+            });
+            DrawChart(LossChartCanvas, new (List<double>, Brush)[]
+            {
+                (_history.Select(h => (double)h.BoxLoss).ToList(), Brushes.OrangeRed),
+                (_history.Select(h => (double)h.ValBox).ToList(), Brushes.Gold),
+            });
+            UpdateFitVerdict();
         }
+    }
+
+    private static void DrawChart(Canvas canvas, (List<double> values, Brush color)[] series)
+    {
+        canvas.Children.Clear();
+        var w = canvas.ActualWidth > 0 ? canvas.ActualWidth : 300;
+        var h = canvas.ActualHeight > 0 ? canvas.ActualHeight : 140;
+        var all = series.SelectMany(s => s.values).Where(v => v > 0).ToList();
+        if (all.Count < 2) return;
+
+        var min = all.Min();
+        var max = Math.Max(all.Max(), min + 0.0001);
+        foreach (var (values, color) in series)
+        {
+            if (values.Count < 2) continue;
+            var points = new PointCollection();
+            for (int i = 0; i < values.Count; i++)
+            {
+                var x = values.Count > 1 ? i / (double)(values.Count - 1) * w : 0;
+                var y = h - (values[i] - min) / (max - min) * h;
+                points.Add(new System.Windows.Point(x, y));
+            }
+            canvas.Children.Add(new System.Windows.Shapes.Polyline { Points = points, Stroke = color, StrokeThickness = 2 });
+        }
+    }
+
+    /// <summary>
+    /// Approximate version of the reference's overfit/underfit heuristic:
+    /// compares the average train vs. validation box loss over the first
+    /// third of epochs so far against the last third. A validation curve
+    /// that tracks the training curve almost exactly usually means there's
+    /// no real val split; a growing gap with val not improving is
+    /// classic overfitting; both staying flat/high is underfitting.
+    /// </summary>
+    private void UpdateFitVerdict()
+    {
+        if (_history.Count < 5) { FitVerdictText.Text = "Fit: menilai..."; return; }
+
+        var train = _history.Select(h => (double)h.BoxLoss).ToList();
+        var val = _history.Select(h => (double)h.ValBox).ToList();
+        var third = Math.Max(1, _history.Count / 3);
+
+        double AvgFirst(List<double> v) => v.Take(third).Average();
+        double AvgLast(List<double> v) => v.TakeLast(third).Average();
+
+        var trainFirst = AvgFirst(train); var trainLast = AvgLast(train);
+        var valFirst = AvgFirst(val); var valLast = AvgLast(val);
+
+        var sameCurve = val.Zip(train, (v, t) => Math.Abs(v - t)).Average() < 0.01;
+        if (sameCurve) { FitVerdictText.Text = "Fit: ⚠ Val = Train (kemungkinan tidak ada val split nyata)"; return; }
+
+        var trainTrend = trainLast - trainFirst;   // negative = improving
+        var valTrend = valLast - valFirst;
+        var gap = valLast - trainLast;              // positive = val worse than train
+
+        if (gap > 0.1 * Math.Max(trainLast, 0.01) && valTrend >= -0.001)
+            FitVerdictText.Text = "Fit: ⚠ Overfitting (val loss tidak turun, train terus turun)";
+        else if (trainTrend >= -0.001 && valTrend >= -0.001)
+            FitVerdictText.Text = "Fit: ⚠ Underfitting (loss belum turun signifikan)";
+        else
+            FitVerdictText.Text = "Fit: ✓ Fit seimbang";
     }
 
     private async void Start_Click(object sender, RoutedEventArgs e) => await RunTraining(resume: false);

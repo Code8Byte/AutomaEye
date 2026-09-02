@@ -22,6 +22,9 @@ public class EpochMetrics
     [JsonPropertyName("boxLoss")] public float BoxLoss { get; set; }
     [JsonPropertyName("clsLoss")] public float ClsLoss { get; set; }
     [JsonPropertyName("dflLoss")] public float DflLoss { get; set; }
+    [JsonPropertyName("valBox")] public float ValBox { get; set; }
+    [JsonPropertyName("valCls")] public float ValCls { get; set; }
+    [JsonPropertyName("valDfl")] public float ValDfl { get; set; }
 }
 
 public class TrainingResult
