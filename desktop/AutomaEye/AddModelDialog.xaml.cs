@@ -65,15 +65,12 @@ public partial class AddModelDialog : System.Windows.Window
 
         SelectedAddons = new List<Addon>();
         if (AddonPresenceCheck.IsChecked == true) SelectedAddons.Add(Addon.PresenceCheck);
-        if (AddonScratches.IsChecked == true) SelectedAddons.Add(Addon.Scratches);
         if (AddonGdt.IsChecked == true) SelectedAddons.Add(Addon.GdtMeasurement);
         if (AddonPositioning.IsChecked == true) SelectedAddons.Add(Addon.Positioning);
         if (AddonColorInspection.IsChecked == true) SelectedAddons.Add(Addon.ColorInspection);
         if (AddonCount.IsChecked == true) SelectedAddons.Add(Addon.Count);
-        if (AddonCharacterRecognition.IsChecked == true) SelectedAddons.Add(Addon.CharacterRecognition);
         if (AddonCode1D.IsChecked == true) SelectedAddons.Add(Addon.Code1D);
         if (AddonCode2D.IsChecked == true) SelectedAddons.Add(Addon.Code2D);
-        if (AddonCalibration.IsChecked == true) SelectedAddons.Add(Addon.Calibration);
 
         DialogResult = true;
     }

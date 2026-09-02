@@ -35,18 +35,23 @@ public static class AITypeExtensions
     };
 }
 
+// Rule-based tools that layer on top of an AIType, matching the split real
+// Keyence CV-X systems make between "AI tools" (Detection/Classification/
+// Segmentation/OCR - already covered by AIType above) and classical
+// geometric/decode tools that aren't themselves a form of AI inference.
+// Deliberately NOT here: a "Scratches" toggle (a scratch is just a class
+// name inside a plain Detection model - it needs no addon of its own) and
+// a "Character Recognition" toggle (that's AIType.OCR itself - listing it
+// twice would just be the same feature under two names).
 public enum Addon
 {
     PresenceCheck,
-    Scratches,
     GdtMeasurement,
     Positioning,
     ColorInspection,
     Count,
-    CharacterRecognition,
     Code1D,
     Code2D,
-    Calibration,
 }
 
 public class TrainingConfig
