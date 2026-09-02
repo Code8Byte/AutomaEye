@@ -1,0 +1,47 @@
+<Window x:Class="AutomaEye.AddonConfigDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AutomaEye - Aturan Inspeksi (Add-ons)" Width="640" Height="600"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="20">
+        <TextBlock Text="Aturan Inspeksi (Add-ons)" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,4"/>
+        <TextBlock x:Name="ModelNameText" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,16"/>
+
+        <StackPanel x:Name="CountPanel" Margin="0,0,0,16" Visibility="Collapsed">
+            <TextBlock Text="Count" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,6"
+                       Text="OK hanya jika jumlah deteksi tepat sama dengan target. Kosongkan untuk mematikan pengecekan ini (selalu OK)."/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Jumlah objek yang diharapkan:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="CountExpectedInput" Width="80"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel x:Name="GdtPanel" Visibility="Collapsed">
+            <TextBlock Text="GD&amp;T Measurement" FontWeight="SemiBold" Margin="0,0,0,6"/>
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                <TextBlock Text="mm / piksel:" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                <TextBox x:Name="MmPerPixelInput" Width="100"/>
+                <TextBlock Text="(pakai tombol Calibrate di kartu model untuk mengisi otomatis)" Foreground="{StaticResource TextDimBrush}" FontSize="11" VerticalAlignment="Center" Margin="10,0,0,0"/>
+            </StackPanel>
+            <TextBlock Text="Kosongkan nominal untuk hanya mengukur (tanpa pass/fail) untuk kelas itu." Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,4,0,10"/>
+            <ItemsControl x:Name="GdtClassList"/>
+        </StackPanel>
+
+        <TextBlock x:Name="NoneText" TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" Visibility="Collapsed"
+                   Text="Model ini tidak punya add-on yang bisa dikonfigurasi (Count atau GD&amp;T Measurement)."/>
+
+        <Grid Margin="0,16,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Cancel" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0" Click="Cancel_Click"/>
+            <Button Grid.Column="2" Content="Simpan Aturan" Style="{StaticResource PrimaryButton}" Click="Save_Click"/>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</Window>

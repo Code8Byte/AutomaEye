@@ -23,8 +23,8 @@ public partial class GdtCalibrationDialog : System.Windows.Window
     private System.Windows.Point? _p1, _p2;
     private double _imageScale = 1; // displayed-pixels -> source-frame-pixels
 
-    /// <summary>Set when the user confirms - pixels-per-millimetre.</summary>
-    public double? ResultPxPerMm { get; private set; }
+    /// <summary>Set when the user confirms - millimetres-per-pixel (matches the reference app's addonConfig.gdt.mmPerPixel).</summary>
+    public double? ResultMmPerPixel { get; private set; }
 
     public GdtCalibrationDialog(int cameraIndex)
     {
@@ -116,7 +116,7 @@ public partial class GdtCalibrationDialog : System.Windows.Window
         var dy = (_p2.Value.Y - _p1.Value.Y) * _imageScale;
         var pixelDistance = Math.Sqrt(dx * dx + dy * dy);
 
-        ResultPxPerMm = pixelDistance / mm;
+        ResultMmPerPixel = mm / pixelDistance;
         DialogResult = true;
     }
 

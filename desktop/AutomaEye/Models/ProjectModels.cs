@@ -1,12 +1,15 @@
-// Project & Model domain (Keyence-style), ported from the Go prototype's
-// internal/project package. Folder layout on disk stays identical so an old
-// project directory (if any) can be dropped in unchanged:
+// Project & Model domain, ported field-for-field from the reference Electron
+// app (github.com/CodeVouz/AutomaEye, lib/projects.js + lib/workflow.js) so
+// this C# rewrite matches its actual thesis-graded behavior instead of an
+// invented redesign. Folder layout on disk:
 //
-//   projects/<project_name>/project.json
-//                            models/<model_name>/model.json
-//                                                 dataset/images/{train,val}
-//                                                 dataset/labels/{train,val}
-//                                                 weights/best.onnx
+//   projects/<project_name>/project.json   (models live INLINE in this file
+//                                            - there is no per-model model.json)
+//                            models/<model_name>/dataset/images/{train,val,test}
+//                                                 dataset/labels/{train,val,test}
+//                                                 dataset/data.yaml
+//                                                 weights/best.onnx (+ best.pt if trained via Python)
+//                                                 versions/v<N>/best.onnx
 //                            outputs/YYYY-MM-DD/NNN-HHMM.jpg (+ .json)
 //                            outputs/daily_summary.csv
 using System;
@@ -35,23 +38,83 @@ public static class AITypeExtensions
     };
 }
 
-// Rule-based tools that layer on top of an AIType, matching the split real
-// Keyence CV-X systems make between "AI tools" (Detection/Classification/
-// Segmentation/OCR - already covered by AIType above) and classical
-// geometric/decode tools that aren't themselves a form of AI inference.
-// Deliberately NOT here: a "Scratches" toggle (a scratch is just a class
-// name inside a plain Detection model - it needs no addon of its own) and
-// a "Character Recognition" toggle (that's AIType.OCR itself - listing it
-// twice would just be the same feature under two names).
+/// <summary>
+/// Rule-based tools offered in the "New Model" wizard - the exact 10 tiles
+/// the reference app's new_model.html ships, in its exact order. Only
+/// PresenceCheck, Count and GdtMeasurement have real evaluation logic
+/// there (and here) - the other 7 are inert wizard tiles the reference app
+/// itself labels "belum aktif (placeholder)". They stay in the list because
+/// removing them would just be a different, unreviewed redesign again -
+/// <see cref="AddonExtensions.IsWired"/> is what the UI uses to show the
+/// same "not wired yet" hint the reference app shows.
+/// </summary>
 public enum Addon
 {
     PresenceCheck,
+    Scratches,
     GdtMeasurement,
     Positioning,
     ColorInspection,
     Count,
+    CharacterRecognition,
     Code1D,
     Code2D,
+    Calibration,
+}
+
+public static class AddonExtensions
+{
+    public static string Label(this Addon a) => a switch
+    {
+        Addon.PresenceCheck => "Presence Check",
+        Addon.Scratches => "Scratches",
+        Addon.GdtMeasurement => "GD&T Measurement",
+        Addon.Positioning => "Positioning",
+        Addon.ColorInspection => "Color Inspection",
+        Addon.Count => "Count",
+        Addon.CharacterRecognition => "Character Recognition",
+        Addon.Code1D => "1D Code",
+        Addon.Code2D => "2D Code",
+        Addon.Calibration => "Calibration",
+        _ => a.ToString(),
+    };
+
+    /// <summary>True for the 3 addons WorkflowExecutor actually evaluates.</summary>
+    public static bool IsWired(this Addon a) => a is Addon.PresenceCheck or Addon.Count or Addon.GdtMeasurement;
+}
+
+public enum GdtShape { Circle, Rect }
+
+/// <summary>Per-class GD&T dimension config - nominal+tolerance in mm. Null nominal = measure-only, no pass/fail.</summary>
+public class GdtClassConfig
+{
+    public GdtShape Shape { get; set; } = GdtShape.Circle;
+
+    /// <summary>Expected feature count for this class - informational only, never gates the verdict (matches the reference, which explicitly dropped a stricter count-gate so it wouldn't hold up the Arduino signal).</summary>
+    public int? Count { get; set; }
+
+    public double? NominalDiameterMm { get; set; }
+    public double? ToleranceDiameterMm { get; set; }
+    public double? NominalLongMm { get; set; }
+    public double? ToleranceLongMm { get; set; }
+    public double? NominalShortMm { get; set; }
+    public double? ToleranceShortMm { get; set; }
+}
+
+/// <summary>Parameters for the addons that are actually wired (see <see cref="AddonExtensions.IsWired"/>).</summary>
+public class AddonConfig
+{
+    /// <summary>Count addon: exact number of detections required for OK. Null = informational only, always passes.</summary>
+    public int? CountExpected { get; set; }
+
+    /// <summary>GD&T Measurement: shared px-to-mm ratio from manual calibration.</summary>
+    public double? MmPerPixel { get; set; }
+
+    /// <summary>GD&T Measurement: per-class shape + nominal/tolerance, keyed by class name.</summary>
+    public Dictionary<string, GdtClassConfig> GdtPerClass { get; set; } = new();
+
+    /// <summary>true = measure from the axis-aligned bounding box (stable); false = prefer segmentation contour measurements when available.</summary>
+    public bool MeasureFromBox { get; set; } = true;
 }
 
 public class TrainingConfig
@@ -60,17 +123,13 @@ public class TrainingConfig
     public int Batch { get; set; } = 16;
     public int ImgSize { get; set; } = 640;
     public float LearnRate { get; set; } = 0.01f;
-    public bool AugRotate { get; set; } = true;
-    public bool AugBlur { get; set; }
-    public bool AugExposure { get; set; } = true;
-    public bool AugFlip { get; set; } = true;
-    public bool AugNoise { get; set; }
 }
 
 public class DatasetStats
 {
     public int Train { get; set; }
     public int Val { get; set; }
+    public int Test { get; set; }
     public int Annotated { get; set; }
     public int Augmented { get; set; }
 }
@@ -78,11 +137,29 @@ public class DatasetStats
 public class AugOptions
 {
     public bool Rotate { get; set; }
+    public double RotateDegrees { get; set; } = 15;
+    public bool FlipHorizontal { get; set; }
+    public bool FlipVertical { get; set; }
     public bool Blur { get; set; }
+    public double BlurSigma { get; set; } = 2.0;
     public bool Exposure { get; set; }
-    public bool Flip { get; set; }
+    public double ExposureAlpha { get; set; } = 1.2;
     public bool Noise { get; set; }
+    public double NoiseSigma { get; set; } = 8;
     public int Multiplier { get; set; } = 2;
+}
+
+/// <summary>One snapshot of best.onnx/best.pt after a successful training run - mirrors the reference's Roboflow-style version history.</summary>
+public class ModelVersion
+{
+    public int Id { get; set; }
+    public DateTime Date { get; set; } = DateTime.UtcNow;
+    public float MAP50 { get; set; }
+    public float MAP5095 { get; set; }
+    public float Precision { get; set; }
+    public float Recall { get; set; }
+    public float F1 { get; set; }
+    public List<string> Classes { get; set; } = new();
 }
 
 public class Model
@@ -90,6 +167,7 @@ public class Model
     public string Name { get; set; } = "";
     public AIType Type { get; set; } = AIType.Detection;
     public List<Addon> Addons { get; set; } = new();
+    public AddonConfig AddonConfig { get; set; } = new();
     public List<string> Classes { get; set; } = new();
     public TrainingConfig Training { get; set; } = new();
     public bool Trained { get; set; }
@@ -99,24 +177,13 @@ public class Model
     /// <summary>Confidence threshold picked by CalibrationService.Calibrate(), if run. Null = use the run's default confidence.</summary>
     public float? CalibratedConfidence { get; set; }
 
-    /// <summary>
-    /// GD&amp;T Measurement addon only. Pixels-per-millimetre from the manual
-    /// two-point calibration (Models tab > Calibrate) - null until that's
-    /// been done at least once. No physical measurement sensor is assumed;
-    /// this is the "no sensor -> manual calibration" path.
-    /// </summary>
-    public double? PxPerMm { get; set; }
-
-    /// <summary>Acceptable measured size range in mm, once calibrated. A detection outside this range is NG.</summary>
-    public double? GdtToleranceMinMm { get; set; }
-    public double? GdtToleranceMaxMm { get; set; }
+    public List<ModelVersion> Versions { get; set; } = new();
+    public int? ActiveVersion { get; set; }
 
     public float LastMAP { get; set; }
     public float LastPrecision { get; set; }
     public float LastRecall { get; set; }
     public float LastF1 { get; set; }
-    public int DatasetCount { get; set; }
-    public int AnnotatedCount { get; set; }
 
     // Absolute path, filled in at load time - not persisted.
     [JsonIgnore]
@@ -137,6 +204,12 @@ public class WorkflowStep
     public int StepIndex { get; set; }
     public string ModelName { get; set; } = "";
     public Category Category { get; set; } = Category.Inspection;
+
+    /// <summary>Pin a specific trained version instead of always using the model's current active version. Null = use active version.</summary>
+    public int? Version { get; set; }
+
+    /// <summary>Positioning/Inspection only: treat "nothing detected" as a pass-through OK instead of NG (matches the reference's passOnNoDetect checkbox).</summary>
+    public bool PassOnNoDetect { get; set; }
 
     /// <summary>
     /// "always" | "on_ok" | "on_ng" - whether the chain continues past this step.

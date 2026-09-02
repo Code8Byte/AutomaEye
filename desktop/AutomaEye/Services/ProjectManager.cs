@@ -131,10 +131,14 @@ public class ProjectManager
         if (project.FindModel(name) != null) throw new InvalidOperationException($"Model \"{name}\" already exists");
 
         var modelDir = Path.Combine(project.Dir, ModelsDir, name);
-        foreach (var sub in new[] { "dataset/images/train", "dataset/images/val", "dataset/labels/train", "dataset/labels/val", WeightsDir, "runs" })
+        foreach (var split in new[] { "train", "val", "test" })
+        foreach (var kind in new[] { "images", "labels" })
         {
-            Directory.CreateDirectory(Path.Combine(modelDir, sub.Replace('/', Path.DirectorySeparatorChar)));
+            Directory.CreateDirectory(Path.Combine(modelDir, "dataset", kind, split));
         }
+        Directory.CreateDirectory(Path.Combine(modelDir, WeightsDir));
+        Directory.CreateDirectory(Path.Combine(modelDir, "runs"));
+        Directory.CreateDirectory(Path.Combine(modelDir, "versions"));
         WriteDataYaml(modelDir, classes);
 
         var now = DateTime.UtcNow;

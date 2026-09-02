@@ -21,6 +21,7 @@ public class ModelDisplay
     public string Type { get; set; } = "";
     public string TrainedLabel { get; set; } = "";
     public bool IsGdt { get; set; }
+    public bool HasAddonConfig { get; set; }
     public string GdtStatus { get; set; } = "";
 }
 
@@ -199,7 +200,8 @@ public partial class MainWindow : System.Windows.Window
             Type = m.Type.Label(),
             TrainedLabel = m.Trained ? "trained" : "untrained",
             IsGdt = m.Addons.Contains(Addon.GdtMeasurement),
-            GdtStatus = m.PxPerMm is { } px ? $"Calibrated: {px:F2} px/mm" : "Not calibrated yet - click Calibrate",
+            HasAddonConfig = m.Addons.Any(a => a is Addon.GdtMeasurement or Addon.Count),
+            GdtStatus = m.AddonConfig.MmPerPixel is { } mmpp ? $"Calibrated: {mmpp:F4} mm/px" : "Not calibrated yet - click Calibrate",
         }).ToList();
     }
 
@@ -210,7 +212,12 @@ public partial class MainWindow : System.Windows.Window
         if (dialog.ShowDialog() != true) return;
         try
         {
-            _mgr.AddModel(_current, dialog.ModelName, dialog.SelectedType, dialog.SelectedAddons, dialog.Classes);
+            var model = _mgr.AddModel(_current, dialog.ModelName, dialog.SelectedType, dialog.SelectedAddons, dialog.Classes);
+            if (dialog.CountExpected is { } count)
+            {
+                model.AddonConfig.CountExpected = count;
+                _mgr.Save(_current);
+            }
             OpenProject(_current.Name);
         }
         catch (Exception ex) { ShowError(ex); }
@@ -277,14 +284,32 @@ public partial class MainWindow : System.Windows.Window
         if (model == null) return;
 
         var dialog = new GdtCalibrationDialog(_selectedCamera) { Owner = this };
-        if (dialog.ShowDialog() == true && dialog.ResultPxPerMm is { } pxPerMm)
+        if (dialog.ShowDialog() == true && dialog.ResultMmPerPixel is { } mmPerPixel)
         {
-            model.PxPerMm = pxPerMm;
+            model.AddonConfig.MmPerPixel = mmPerPixel;
             try
             {
                 _mgr.Save(_current);
                 OpenProject(_current.Name);
-                MessageBox.Show($"Calibrated: {pxPerMm:F2} px/mm.", "AutomaEye");
+                MessageBox.Show($"Calibrated: {mmPerPixel:F4} mm/px.", "AutomaEye");
+            }
+            catch (Exception ex) { ShowError(ex); }
+        }
+    }
+
+    private void ConfigureAddons_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null || sender is not Button { Tag: string modelName }) return;
+        var model = _current.FindModel(modelName);
+        if (model == null) return;
+
+        var dialog = new AddonConfigDialog(model) { Owner = this };
+        if (dialog.ShowDialog() == true)
+        {
+            try
+            {
+                _mgr.Save(_current);
+                OpenProject(_current.Name);
             }
             catch (Exception ex) { ShowError(ex); }
         }
@@ -347,7 +372,7 @@ public partial class MainWindow : System.Windows.Window
         button.Content = "Augmenting...";
         try
         {
-            var opts = new AugOptions { Rotate = true, Flip = true, Blur = true, Exposure = true, Multiplier = 2 };
+            var opts = new AugOptions { Rotate = true, FlipHorizontal = true, Blur = true, Exposure = true, Multiplier = 2 };
             var n = await System.Threading.Tasks.Task.Run(() => DatasetService.Augment(model, opts));
             MessageBox.Show($"Generated {n} augmented images for \"{name}\".", "AutomaEye");
         }

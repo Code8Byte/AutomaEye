@@ -63,22 +63,87 @@ public class WorkflowExecutor : IDisposable
     }
 
     /// <summary>
-    /// Verdict depends on what the model is for, not just whether it found
-    /// something: a Presence Check model is OK when its target IS detected
-    /// (NG when absent), while every other addon (Scratches, defect
-    /// detectors, ...) is OK when nothing NG-classed was found. A class
-    /// literally named "OK" is never itself treated as a defect hit.
+    /// Matches the reference app's evaluateAddons() exactly: with no wired
+    /// addon configured, the default rule is "at least one detection = OK".
+    /// Each wired addon (PresenceCheck/Count/GdtMeasurement) that IS
+    /// configured is one more required check, ANDed together - it does not
+    /// replace the default rule, it adds to it. A GD&T note string is always
+    /// attached when that addon is present, even if it has no nominal set
+    /// yet (measure-only mode).
     /// </summary>
-    private static (string verdict, float confidence) ComputeVerdict(Model model, List<Detection> detections)
+    private static (string verdict, float confidence, string? note) EvaluateAddons(Model model, List<Detection> detections)
     {
-        var hits = detections.Where(d => d.ClassName != "OK").ToList();
-        bool isPresenceCheck = model.Addons.Contains(Addon.PresenceCheck);
+        var wired = model.Addons.Where(a => a.IsWired()).ToList();
+        var confidence = detections.Count > 0 ? detections.Max(d => d.Confidence) : 0f;
+        string? note = null;
 
-        if (isPresenceCheck)
+        bool passed;
+        if (wired.Count == 0)
         {
-            return hits.Count > 0 ? ("OK", hits.Max(d => d.Confidence)) : ("NG", 0f);
+            passed = detections.Count >= 1;
         }
-        return hits.Count > 0 ? ("NG", hits.Min(d => d.Confidence)) : ("OK", 1.0f);
+        else
+        {
+            passed = true;
+            if (wired.Contains(Addon.PresenceCheck))
+                passed &= detections.Count >= 1;
+
+            if (wired.Contains(Addon.Count) && model.AddonConfig.CountExpected is { } expected)
+                passed &= detections.Count == expected;
+
+            if (wired.Contains(Addon.GdtMeasurement))
+            {
+                var (gdtOk, gdtNote) = EvaluateGdt(model, detections);
+                passed &= gdtOk;
+                note = gdtNote;
+            }
+        }
+
+        return (passed ? "OK" : "NG", confidence, note);
+    }
+
+    private static (bool ok, string? note) EvaluateGdt(Model model, List<Detection> detections)
+    {
+        var mmPerPixel = model.AddonConfig.MmPerPixel;
+        var perClass = model.AddonConfig.GdtPerClass;
+        if (mmPerPixel is not { } mm || mm <= 0 || detections.Count == 0) return (true, null);
+
+        bool ok = true;
+        var notes = new List<string>();
+        foreach (var d in detections)
+        {
+            if (!perClass.TryGetValue(d.ClassName, out var cfg)) continue;
+            var wPx = d.X2 - d.X1;
+            var hPx = d.Y2 - d.Y1;
+
+            if (cfg.Shape == GdtShape.Circle)
+            {
+                var diaMm = (wPx + hPx) / 2.0 * mm;
+                notes.Add($"{d.ClassName} Ø{diaMm:F2}mm");
+                if (cfg.NominalDiameterMm is { } nominal)
+                {
+                    var tol = cfg.ToleranceDiameterMm ?? 0;
+                    if (Math.Abs(diaMm - nominal) > tol) ok = false;
+                }
+            }
+            else
+            {
+                var longMm = Math.Max(wPx, hPx) * mm;
+                var shortMm = Math.Min(wPx, hPx) * mm;
+                notes.Add($"{d.ClassName} {longMm:F2}x{shortMm:F2}mm");
+                if (cfg.NominalLongMm is { } nomLong)
+                {
+                    var tol = cfg.ToleranceLongMm ?? 0;
+                    if (Math.Abs(longMm - nomLong) > tol) ok = false;
+                }
+                if (cfg.NominalShortMm is { } nomShort)
+                {
+                    var tol = cfg.ToleranceShortMm ?? 0;
+                    if (Math.Abs(shortMm - nomShort) > tol) ok = false;
+                }
+            }
+        }
+        return (ok, notes.Count > 0 ? "Measured: " + string.Join(", ", notes) : null);
     }
 
     public RunResult Run(Mat frame)
@@ -125,16 +190,15 @@ public class WorkflowExecutor : IDisposable
             }
             sr.InferenceMs = stepSw.Elapsed.TotalMilliseconds;
             sr.Detections = detections;
-            (sr.Verdict, sr.Confidence) = ComputeVerdict(model, detections);
 
-            // GD&T Measurement: report each detection's real-world size once
-            // the model has been calibrated (Models tab > Calibrate). No
-            // tolerance-based pass/fail yet - this surfaces the measurement
-            // so the custom output script (or a future tolerance UI) can act on it.
-            if (model.Addons.Contains(Addon.GdtMeasurement) && model.PxPerMm is { } pxPerMm and > 0 && detections.Count > 0)
+            if (detections.Count == 0 && step.PassOnNoDetect)
             {
-                var sizes = detections.Select(d => $"{(d.X2 - d.X1) / pxPerMm:F1}x{(d.Y2 - d.Y1) / pxPerMm:F1}mm");
-                sr.Note = "Measured: " + string.Join(", ", sizes);
+                sr.Verdict = "OK";
+                sr.Confidence = 1f;
+            }
+            else
+            {
+                (sr.Verdict, sr.Confidence, sr.Note) = EvaluateAddons(model, detections);
             }
 
             result.Steps.Add(sr);
