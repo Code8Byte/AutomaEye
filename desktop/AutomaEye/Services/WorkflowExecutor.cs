@@ -146,6 +146,28 @@ public class WorkflowExecutor : IDisposable
         return (ok, notes.Count > 0 ? "Measured: " + string.Join(", ", notes) : null);
     }
 
+    /// <summary>
+    /// Cheap presence-only probe using the workflow's Positioning-category
+    /// model, if one is assigned - lets the Run loop's tracking mode decide
+    /// whether a part is in frame without paying for the full chain every
+    /// tick. Returns null when there's no Positioning step to probe with
+    /// (tracking then has nothing to key off and should just run every tick).
+    /// </summary>
+    public bool? CheckPresence(Mat frame)
+    {
+        var step = _project.Workflow.Steps.FirstOrDefault(s => s.Category == Category.Positioning);
+        if (step == null) return null;
+        var model = _project.FindModel(step.ModelName);
+        if (model == null || !model.Trained) return null;
+
+        try
+        {
+            var engine = LoadEngine(model);
+            return engine.Infer(frame).Detections.Count > 0;
+        }
+        catch { return null; }
+    }
+
     public RunResult Run(Mat frame)
     {
         if (_project.Workflow.Steps.Count == 0)

@@ -82,6 +82,15 @@ public partial class MainWindow : System.Windows.Window
     private DispatcherTimer? _runTimer;
     private bool _running;
     private int _total, _ok, _ng;
+
+    // Tracking mode (matches the reference's "1 nomor & 1 sinyal per part"):
+    // settles on a part before inspecting it once, then waits for it to
+    // leave frame before arming the next one - instead of re-inspecting
+    // and re-signaling the same physical part on every camera tick.
+    private const int SettleFrames = 3;
+    private const int ExitFrames = 2;
+    private int _consecutivePresent, _consecutiveAbsent;
+    private bool _partSignaled;
     private int _selectedCamera;
     private string _outputMode = "signal";
 
@@ -630,6 +639,8 @@ public partial class MainWindow : System.Windows.Window
             _recorder = new OutputRecorder(_current, signals, _gate);
 
             _total = _ok = _ng = 0;
+            _consecutivePresent = _consecutiveAbsent = 0;
+            _partSignaled = false;
             UpdateCounters();
             _running = true;
             ToggleRunButton.Content = "Stop";
@@ -652,25 +663,76 @@ public partial class MainWindow : System.Windows.Window
         try
         {
             using var frame = _cam.Read();
-            var result = _executor.Run(frame);
-            _recorder.Record(frame, result);
-
             PreviewImage.Source = frame.ToBitmapSource();
             PreviewIdleText.Visibility = Visibility.Collapsed;
-            _total++;
-            if (result.FinalVerdict == "OK") _ok++; else _ng++;
-            UpdateCounters();
 
-            VerdictText.Text = result.FinalVerdict;
-            VerdictBadge.Background = result.FinalVerdict == "OK"
-                ? new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x0f, 0x2a, 0x22))
-                : new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x2a, 0x14, 0x18));
+            if (TrackingCheck.IsChecked == true)
+            {
+                var present = _executor.CheckPresence(frame);
+                if (present == null)
+                {
+                    // No Positioning step assigned - tracking has nothing to
+                    // key off, fall back to inspecting every tick.
+                    TrackingStatusText.Text = "Part: - (tracking needs a Positioning step)";
+                    InspectAndRecord(frame);
+                    return;
+                }
+
+                if (present == true)
+                {
+                    _consecutivePresent++;
+                    _consecutiveAbsent = 0;
+                    if (_consecutivePresent >= SettleFrames && !_partSignaled)
+                    {
+                        TrackingStatusText.Text = "Part: settled - inspecting";
+                        InspectAndRecord(frame);
+                        _partSignaled = true;
+                    }
+                    else if (!_partSignaled)
+                    {
+                        TrackingStatusText.Text = $"Part: settling ({_consecutivePresent}/{SettleFrames})";
+                    }
+                }
+                else
+                {
+                    _consecutiveAbsent++;
+                    _consecutivePresent = 0;
+                    if (_consecutiveAbsent >= ExitFrames && _partSignaled)
+                    {
+                        _partSignaled = false;
+                        TrackingStatusText.Text = "Part: menunggu part berikutnya";
+                    }
+                    else if (!_partSignaled)
+                    {
+                        TrackingStatusText.Text = "Part: menunggu part";
+                    }
+                }
+                return;
+            }
+
+            InspectAndRecord(frame);
         }
         catch (Exception ex)
         {
             VerdictText.Text = "ERROR";
             Console.WriteLine(ex.Message);
         }
+    }
+
+    private void InspectAndRecord(Mat frame)
+    {
+        if (_executor == null || _recorder == null) return;
+        var result = _executor.Run(frame);
+        _recorder.Record(frame, result);
+
+        _total++;
+        if (result.FinalVerdict == "OK") _ok++; else _ng++;
+        UpdateCounters();
+
+        VerdictText.Text = result.FinalVerdict;
+        VerdictBadge.Background = result.FinalVerdict == "OK"
+            ? new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x0f, 0x2a, 0x22))
+            : new System.Windows.Media.SolidColorBrush(System.Windows.Media.Color.FromRgb(0x2a, 0x14, 0x18));
     }
 
     private void UpdateCounters()
@@ -692,6 +754,8 @@ public partial class MainWindow : System.Windows.Window
     private void CleanupRun()
     {
         _running = false;
+        _consecutivePresent = _consecutiveAbsent = 0;
+        _partSignaled = false;
         _runTimer?.Stop();
         _runTimer = null;
         _executor?.Dispose();

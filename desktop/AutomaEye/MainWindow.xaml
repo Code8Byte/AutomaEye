@@ -188,6 +188,10 @@
                                 </ItemsControl.ItemTemplate>
                             </ItemsControl>
 
+                            <CheckBox x:Name="TrackingCheck" Content="Tracking (1 nomor &amp; 1 sinyal per part)" IsChecked="True" Margin="0,0,0,4"
+                                      ToolTip="Requires a Positioning step: waits for a part to settle in frame before inspecting once, then waits for it to leave before arming the next one - instead of inspecting every camera tick."/>
+                            <TextBlock x:Name="TrackingStatusText" Text="Part: -" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,14"/>
+
                             <Border x:Name="VerdictBadge" Background="{StaticResource PanelBrush}" BorderBrush="{StaticResource BorderBrush2}" BorderThickness="1" CornerRadius="8" Padding="10,16" Margin="0,0,0,14">
                                 <TextBlock x:Name="VerdictText" Text="IDLE" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" FontFamily="Consolas"/>
                             </Border>
