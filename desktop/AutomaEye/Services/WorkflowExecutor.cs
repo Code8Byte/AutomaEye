@@ -213,6 +213,12 @@ public class WorkflowExecutor : IDisposable
         }
 
         result.TotalMs = sw.Elapsed.TotalMilliseconds;
+
+        // Matches the reference: this runs on every inspection, not just
+        // when a user asks for it - self-learning is a passive, continuous
+        // hard-sample collector, gated only by the Settings toggle.
+        SelfLearningService.Collect(_project, result, frame);
+
         return result;
     }
 

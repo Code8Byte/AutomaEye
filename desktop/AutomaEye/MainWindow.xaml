@@ -74,6 +74,10 @@
                                                 </StackPanel>
                                             </Grid>
                                             <TextBlock Text="{Binding GdtStatus}" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,6,0,0" Visibility="{Binding IsGdt, Converter={StaticResource BoolToVis}}"/>
+                                            <StackPanel Orientation="Horizontal" Margin="0,6,0,0" Visibility="{Binding ShowSelfLearning, Converter={StaticResource BoolToVis}}">
+                                                <TextBlock Text="{Binding SelfLearningStatus}" Foreground="{StaticResource TextDimBrush}" FontSize="11" VerticalAlignment="Center"/>
+                                                <Button Content="Archive" Style="{StaticResource SecondaryButton}" Padding="8,2" FontSize="11" Margin="8,0,0,0" Click="ArchiveSelfLearning_Click" Tag="{Binding Name}"/>
+                                            </StackPanel>
                                         </StackPanel>
                                     </Border>
                                 </DataTemplate>

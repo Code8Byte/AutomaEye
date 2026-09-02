@@ -23,6 +23,8 @@ public class ModelDisplay
     public bool IsGdt { get; set; }
     public bool HasAddonConfig { get; set; }
     public string GdtStatus { get; set; } = "";
+    public bool ShowSelfLearning { get; set; }
+    public string SelfLearningStatus { get; set; } = "";
 }
 
 public class WorkflowStepDisplay
@@ -205,14 +207,23 @@ public partial class MainWindow : System.Windows.Window
     private void RenderModels()
     {
         if (_current == null) return;
-        ModelsList.ItemsSource = _current.Models.Select(m => new ModelDisplay
+        var slEnabled = ConfigService.Current.SelfLearning.Enabled;
+        ModelsList.ItemsSource = _current.Models.Select(m =>
         {
-            Name = m.Name,
-            Type = m.Type.Label(),
-            TrainedLabel = m.Trained ? "trained" : "untrained",
-            IsGdt = m.Addons.Contains(Addon.GdtMeasurement),
-            HasAddonConfig = m.Addons.Any(a => a is Addon.GdtMeasurement or Addon.Count),
-            GdtStatus = m.AddonConfig.MmPerPixel is { } mmpp ? $"Calibrated: {mmpp:F4} mm/px" : "Not calibrated yet - click Calibrate",
+            var sl = SelfLearningService.Status(m);
+            return new ModelDisplay
+            {
+                Name = m.Name,
+                Type = m.Type.Label(),
+                TrainedLabel = m.Trained ? "trained" : "untrained",
+                IsGdt = m.Addons.Contains(Addon.GdtMeasurement),
+                HasAddonConfig = m.Addons.Any(a => a is Addon.GdtMeasurement or Addon.Count),
+                GdtStatus = m.AddonConfig.MmPerPixel is { } mmpp ? $"Calibrated: {mmpp:F4} mm/px" : "Not calibrated yet - click Calibrate",
+                ShowSelfLearning = slEnabled,
+                SelfLearningStatus = sl.NeedsRetrain
+                    ? $"Self-Learning: {sl.Pending} sampel ragu-ragu terkumpul - saatnya retrain (target {sl.RetrainEveryN})"
+                    : $"Self-Learning: {sl.Pending}/{sl.RetrainEveryN} sampel ragu-ragu terkumpul",
+            };
         }).ToList();
     }
 
@@ -381,6 +392,15 @@ public partial class MainWindow : System.Windows.Window
         var dialog = new TrainDialog(_mgr, _current, model) { Owner = this };
         dialog.ShowDialog();
         OpenProject(_current.Name);
+    }
+
+    private void ArchiveSelfLearning_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null || sender is not Button { Tag: string name }) return;
+        var model = _current.FindModel(name);
+        if (model == null) return;
+        SelfLearningService.Archive(model);
+        RenderModels();
     }
 
     private void TestModel_Click(object sender, RoutedEventArgs e)
