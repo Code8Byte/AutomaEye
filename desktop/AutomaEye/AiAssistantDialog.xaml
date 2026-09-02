@@ -10,7 +10,9 @@
                 <StackPanel Margin="0,16,0,0">
                     <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                         <DatePicker x:Name="ReportDatePicker" Margin="0,0,10,0"/>
-                        <Button Content="Generate Report" Style="{StaticResource PrimaryButton}" Click="GenerateReport_Click"/>
+                        <Button Content="Generate Report" Style="{StaticResource PrimaryButton}" Margin="0,0,8,0" Click="GenerateReport_Click"/>
+                        <Button Content="Generate Excel Deteksi" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0" Click="GenerateXlsx_Click"/>
+                        <Button x:Name="OpenXlsxButton" Content="Buka XLSX" Style="{StaticResource SecondaryButton}" Click="OpenXlsx_Click" IsEnabled="False"/>
                     </StackPanel>
                     <Border Background="Black" BorderBrush="{StaticResource BorderBrush2}" BorderThickness="1" CornerRadius="4">
                         <ScrollViewer Height="440" Padding="10">

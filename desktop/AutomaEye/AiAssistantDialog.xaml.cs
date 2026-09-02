@@ -11,6 +11,7 @@ public partial class AiAssistantDialog : System.Windows.Window
     private readonly Project _project;
     private readonly AiAssistantService _ai = new();
     private System.Collections.Generic.List<ChatMessage> _chat = AiAssistantService.NewChat();
+    private string? _lastXlsxPath;
 
     public AiAssistantDialog(Project project)
     {
@@ -30,6 +31,24 @@ public partial class AiAssistantDialog : System.Windows.Window
             ReportText.Text = await _ai.GenerateReportAsync(summary, date);
         }
         catch (Exception ex) { ReportText.Text = ex.Message; }
+    }
+
+    private void GenerateXlsx_Click(object sender, RoutedEventArgs e)
+    {
+        var date = ReportDatePicker.SelectedDate ?? DateTime.Today;
+        try
+        {
+            _lastXlsxPath = Services.DetectionReportService.Generate(_project, date);
+            OpenXlsxButton.IsEnabled = true;
+            ReportText.Text = $"Generated: {_lastXlsxPath}";
+        }
+        catch (Exception ex) { ReportText.Text = ex.Message; }
+    }
+
+    private void OpenXlsx_Click(object sender, RoutedEventArgs e)
+    {
+        if (_lastXlsxPath == null) return;
+        System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo { FileName = _lastXlsxPath, UseShellExecute = true });
     }
 
     private async void Analyze_Click(object sender, RoutedEventArgs e)

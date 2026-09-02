@@ -9,10 +9,18 @@ namespace AutomaEye.Services;
 
 public class Detection
 {
-    public float X1, Y1, X2, Y2;
-    public float Confidence;
-    public int ClassId;
-    public string ClassName = "";
+    // Properties, not fields: System.Text.Json only serializes properties by
+    // default, and OutputRecorder writes StepResult (which nests these) to
+    // outputs/<date>/*.json - as fields, every saved detection silently came
+    // out as an empty object, with no bbox/class/confidence recoverable
+    // afterward despite the file existing specifically to record that.
+    public float X1 { get; set; }
+    public float Y1 { get; set; }
+    public float X2 { get; set; }
+    public float Y2 { get; set; }
+    public float Confidence { get; set; }
+    public int ClassId { get; set; }
+    public string ClassName { get; set; } = "";
 }
 
 public class InferenceResult
