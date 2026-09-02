@@ -28,6 +28,9 @@ public partial class SettingsDialog : System.Windows.Window
         AiApiKeyInput.Password = cfg.Ai.ApiKey;
         AiModelInput.Text = cfg.Ai.Model;
 
+        AnnotationBaseUrlInput.Text = cfg.Annotation.BaseUrl;
+        AnnotationTokenInput.Password = cfg.Annotation.AccessToken;
+
         SelfLearningEnabledCheck.IsChecked = cfg.SelfLearning.Enabled;
         RetrainEveryNInput.Text = cfg.SelfLearning.RetrainEveryN.ToString(CultureInfo.InvariantCulture);
         UncertaintyLowInput.Text = cfg.SelfLearning.UncertaintyLow.ToString(CultureInfo.InvariantCulture);
@@ -56,6 +59,9 @@ public partial class SettingsDialog : System.Windows.Window
         cfg.Ai.BaseUrl = AiBaseUrlInput.Text.Trim();
         cfg.Ai.ApiKey = AiApiKeyInput.Password;
         cfg.Ai.Model = AiModelInput.Text.Trim();
+
+        cfg.Annotation.BaseUrl = AnnotationBaseUrlInput.Text.Trim();
+        cfg.Annotation.AccessToken = AnnotationTokenInput.Password;
 
         cfg.SelfLearning.Enabled = SelfLearningEnabledCheck.IsChecked == true;
         cfg.SelfLearning.RetrainEveryN = ParseI(RetrainEveryNInput.Text, cfg.SelfLearning.RetrainEveryN);

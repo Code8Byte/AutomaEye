@@ -25,6 +25,13 @@ public class AiAssistantSettings
     public string Model { get; set; } = "meta/llama-3.3-70b-instruct";
 }
 
+/// <summary>External Label Studio server this app drives via its REST API - launched as a background Python process, opened in the system browser rather than embedded (no WebView2 dependency).</summary>
+public class AnnotationSettings
+{
+    public string BaseUrl { get; set; } = "http://localhost:8080";
+    public string AccessToken { get; set; } = "";
+}
+
 public class SelfLearningSettings
 {
     public bool Enabled { get; set; }
@@ -39,6 +46,7 @@ public class AppConfig
     public ModelDefaults Model { get; set; } = new();
     public ArduinoSettings Arduino { get; set; } = new();
     public AiAssistantSettings Ai { get; set; } = new();
+    public AnnotationSettings Annotation { get; set; } = new();
     public SelfLearningSettings SelfLearning { get; set; } = new();
     public bool SaveOkImages { get; set; }
 }

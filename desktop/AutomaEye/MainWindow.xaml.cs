@@ -412,6 +412,14 @@ public partial class MainWindow : System.Windows.Window
         RenderModels();
     }
 
+    private void AnnotateModel_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null || sender is not Button { Tag: string name }) return;
+        var model = _current.FindModel(name);
+        if (model == null) return;
+        new AnnotationDialog(model) { Owner = this }.ShowDialog();
+    }
+
     private void TestModel_Click(object sender, RoutedEventArgs e)
     {
         if (_current == null || sender is not Button { Tag: string name }) return;

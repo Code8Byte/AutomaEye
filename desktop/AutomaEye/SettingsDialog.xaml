@@ -68,6 +68,12 @@
         <TextBlock Text="Default model" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
         <TextBox x:Name="AiModelInput" Margin="0,0,0,16"/>
 
+        <TextBlock Text="External Annotation Tool (Label Studio)" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock Text="Server URL" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <TextBox x:Name="AnnotationBaseUrlInput" Margin="0,0,0,8"/>
+        <TextBlock Text="Access Token (Label Studio &gt; Account &amp; Settings)" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <PasswordBox x:Name="AnnotationTokenInput" Margin="0,0,0,16"/>
+
         <TextBlock Text="Self-Learning" FontWeight="SemiBold" Margin="0,0,0,8"/>
         <CheckBox x:Name="SelfLearningEnabledCheck" Content="Aktifkan Self-Learning (kumpulkan sampel ragu-ragu tiap inspeksi)" Margin="0,0,0,8"/>
         <Grid Margin="0,0,0,16">
