@@ -1,0 +1,5 @@
+ultralytics>=8.3
+opencv-python
+pillow
+torch
+onnx

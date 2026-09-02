@@ -17,4 +17,12 @@
     <PackageReference Include="System.IO.Ports" Version="10.0.11" />
   </ItemGroup>
 
+  <!-- Training/evaluation shell out to Ultralytics (Python) - there's no
+       viable pure-C# YOLO trainer, so these scripts ship alongside the app
+       and TrainingService drives them via Process.Start, the same way the
+       reference Electron app drove them via Node's child_process. -->
+  <ItemGroup>
+    <None Include="python\**\*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
 </Project>

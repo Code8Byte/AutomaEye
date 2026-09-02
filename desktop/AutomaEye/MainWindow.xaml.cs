@@ -361,6 +361,17 @@ public partial class MainWindow : System.Windows.Window
         }
     }
 
+    private void TrainModel_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null || sender is not Button { Tag: string name }) return;
+        var model = _current.FindModel(name);
+        if (model == null) return;
+
+        var dialog = new TrainDialog(_mgr, _current, model) { Owner = this };
+        dialog.ShowDialog();
+        OpenProject(_current.Name);
+    }
+
     private async void AugmentModel_Click(object sender, RoutedEventArgs e)
     {
         if (_current == null || sender is not Button { Tag: string name } button) return;
