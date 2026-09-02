@@ -16,7 +16,8 @@
                     Automa<Run Foreground="{StaticResource AccentBrush}" Text="Eye"/>
                 </TextBlock>
                 <Button DockPanel.Dock="Top" Content="+ New project" Style="{StaticResource PrimaryButton}" Margin="0,0,0,8" Click="NewProject_Click"/>
-                <Button DockPanel.Dock="Top" Content="GitHub storage" Style="{StaticResource SecondaryButton}" Margin="0,0,0,12" Click="GitHubStorage_Click"/>
+                <Button DockPanel.Dock="Top" Content="GitHub storage" Style="{StaticResource SecondaryButton}" Margin="0,0,0,8" Click="GitHubStorage_Click"/>
+                <Button DockPanel.Dock="Top" Content="Settings" Style="{StaticResource SecondaryButton}" Margin="0,0,0,12" Click="Settings_Click"/>
                 <ListBox x:Name="ProjectList" Background="Transparent" BorderThickness="0" SelectionChanged="ProjectList_SelectionChanged" DisplayMemberPath="Name"/>
             </DockPanel>
         </Border>
@@ -211,6 +212,14 @@
                             <Button x:Name="ToggleRunButton" Content="Start inspection" Style="{StaticResource PrimaryButton}" Click="ToggleRun_Click"/>
                         </StackPanel>
                     </Grid>
+                </TabItem>
+
+                <TabItem Header="AI Assistant">
+                    <StackPanel Margin="0,16,0,0" MaxWidth="640" HorizontalAlignment="Left">
+                        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,14"
+                                   Text="Uses the daily inspection log (outputs/daily_summary.csv) to generate a report or root-cause analysis, or answer free-form questions - via the OpenAI-compatible endpoint configured in Settings."/>
+                        <Button Content="Open AI Assistant" Style="{StaticResource PrimaryButton}" HorizontalAlignment="Left" Click="OpenAiAssistant_Click"/>
+                    </StackPanel>
                 </TabItem>
             </TabControl>
         </Grid>

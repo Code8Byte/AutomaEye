@@ -153,6 +153,17 @@ public partial class MainWindow : System.Windows.Window
         dialog.ShowDialog();
     }
 
+    private void Settings_Click(object sender, RoutedEventArgs e)
+    {
+        new SettingsDialog { Owner = this }.ShowDialog();
+    }
+
+    private void OpenAiAssistant_Click(object sender, RoutedEventArgs e)
+    {
+        if (_current == null) return;
+        new AiAssistantDialog(_current) { Owner = this }.ShowDialog();
+    }
+
     private void DeleteProject_Click(object sender, RoutedEventArgs e)
     {
         if (_current == null) return;
@@ -580,9 +591,23 @@ public partial class MainWindow : System.Windows.Window
 
         try
         {
+            var cfg = ConfigService.Current;
             _cam = new CameraService(_selectedCamera, 1280, 720, 30);
-            _executor = new WorkflowExecutor(_current, new ModelSettings { Confidence = 0.35f, Iou = 0.45f, ImgSz = 640 });
-            _recorder = new OutputRecorder(_current, new SignalConfig(), _gate);
+            _executor = new WorkflowExecutor(_current, new ModelSettings { Confidence = cfg.Model.Confidence, Iou = cfg.Model.Iou, ImgSz = cfg.Model.ImgSize });
+
+            // Arduino is optional - a project with no gate/PLC wired up should
+            // still run and just skip the signal, not fail to start.
+            try { _gate = new ArduinoGate(cfg.Arduino.Port, cfg.Arduino.Baud); }
+            catch { _gate = null; }
+
+            var signals = new SignalConfig
+            {
+                OkSignal = cfg.Arduino.OkSignal + "\n",
+                NgSignal = cfg.Arduino.NgSignal + "\n",
+                SignalOnOk = cfg.Arduino.SignalOnOk,
+                SaveOkImages = cfg.SaveOkImages,
+            };
+            _recorder = new OutputRecorder(_current, signals, _gate);
 
             _total = _ok = _ng = 0;
             UpdateCounters();

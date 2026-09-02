@@ -1,0 +1,100 @@
+<Window x:Class="AutomaEye.SettingsDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AutomaEye - Settings" Width="600" Height="680"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}">
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="20">
+        <TextBlock Text="Settings" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,16"/>
+
+        <TextBlock Text="Inference Parameter" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <Grid Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                <TextBlock Text="Confidence" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ConfidenceInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                <TextBlock Text="IoU" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="IouInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Image size" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ImgSizeInput"/>
+            </StackPanel>
+        </Grid>
+
+        <TextBlock Text="Python Runtime" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock Text="Python exe (used for Train/Test - must have ultralytics installed)" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <TextBox x:Name="PythonExeInput" Margin="0,0,0,16"/>
+
+        <TextBlock Text="Arduino / Serial (Slide Gate + PLC Signal)" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <Grid Margin="0,0,0,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                <TextBlock Text="Serial port" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ArduinoPortInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="Baud rate" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ArduinoBaudInput"/>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,0,0,4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                <TextBlock Text="OK signal" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ArduinoOkInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="NG signal" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="ArduinoNgInput"/>
+            </StackPanel>
+        </Grid>
+        <CheckBox x:Name="ArduinoSignalOnOkCheck" Content="Kirim sinyal saat OK juga (default hanya NG)" Margin="0,0,0,16"/>
+
+        <TextBlock Text="AI Assistant (OpenAI-compatible)" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock Text="Base URL" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <TextBox x:Name="AiBaseUrlInput" Margin="0,0,0,8"/>
+        <TextBlock Text="API key" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <PasswordBox x:Name="AiApiKeyInput" Margin="0,0,0,8"/>
+        <TextBlock Text="Default model" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,4"/>
+        <TextBox x:Name="AiModelInput" Margin="0,0,0,16"/>
+
+        <TextBlock Text="Self-Learning" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <CheckBox x:Name="SelfLearningEnabledCheck" Content="Aktifkan Self-Learning (kumpulkan sampel ragu-ragu tiap inspeksi)" Margin="0,0,0,8"/>
+        <Grid Margin="0,0,0,16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="*"/><ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                <TextBlock Text="Retrain setiap N sampel" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="RetrainEveryNInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Margin="0,0,8,0">
+                <TextBlock Text="Zona ragu bawah" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="UncertaintyLowInput"/>
+            </StackPanel>
+            <StackPanel Grid.Column="2">
+                <TextBlock Text="Zona ragu atas" Foreground="{StaticResource TextDimBrush}" FontSize="11"/>
+                <TextBox x:Name="UncertaintyHighInput"/>
+            </StackPanel>
+        </Grid>
+
+        <Grid Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/><ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Cancel" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0" Click="Cancel_Click"/>
+            <Button Grid.Column="2" Content="Save" Style="{StaticResource PrimaryButton}" Click="Save_Click"/>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</Window>
