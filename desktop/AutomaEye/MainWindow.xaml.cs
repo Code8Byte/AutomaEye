@@ -77,7 +77,6 @@ public partial class MainWindow : System.Windows.Window
     private WorkflowExecutor? _executor;
     private OutputRecorder? _recorder;
     private DispatcherTimer? _runTimer;
-    private DispatcherTimer? _previewTimer;
     private bool _running;
     private int _total, _ok, _ng;
     private int _selectedCamera;
@@ -91,9 +90,9 @@ public partial class MainWindow : System.Windows.Window
         _mgr = new ProjectManager(root);
 
         RefreshProjects();
-        _previewTimer = new DispatcherTimer { Interval = TimeSpan.FromMilliseconds(150) };
-        _previewTimer.Tick += (_, _) => RefreshPreview();
-        _previewTimer.Start();
+        // No idle camera polling - this is an edge-computing app, the camera
+        // only turns on for a one-off "Preview" click or for Start inspection,
+        // never continuously in the background.
 
         var cameras = SafeListCameras();
         CameraList.ItemsSource = cameras.Select((label, i) => new CameraOption { Index = i, Label = i == 0 ? label + " (selected)" : label }).ToList();
@@ -207,15 +206,11 @@ public partial class MainWindow : System.Windows.Window
     private void AddModel_Click(object sender, RoutedEventArgs e)
     {
         if (_current == null) return;
-        var dialog = new PromptDialog("Add model", "Model name (e.g. PresenceCheck)", "Classes, comma-separated") { Owner = this, Value2 = "OK,NG" };
-        if (dialog.ShowDialog() != true || string.IsNullOrWhiteSpace(dialog.Value1)) return;
-        var classes = (dialog.Value2 ?? "OK,NG").Split(',').Select(s => s.Trim()).Where(s => s.Length > 0).ToList();
-        var addons = new List<Addon>();
-        if (MessageBox.Show("Is this a GD&T Measurement model? (adds pixel-to-mm calibration on this model)", "AutomaEye", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-            addons.Add(Addon.GdtMeasurement);
+        var dialog = new AddModelDialog { Owner = this };
+        if (dialog.ShowDialog() != true) return;
         try
         {
-            _mgr.AddModel(_current, dialog.Value1, AIType.Detection, addons, classes);
+            _mgr.AddModel(_current, dialog.ModelName, dialog.SelectedType, dialog.SelectedAddons, dialog.Classes);
             OpenProject(_current.Name);
         }
         catch (Exception ex) { ShowError(ex); }
@@ -501,36 +496,20 @@ public partial class MainWindow : System.Windows.Window
 
     /* ---------------- Run ---------------- */
 
-    private CameraService? _previewCam;
-    private int _previewCamIndex = -1;
-
-    private void RefreshPreview()
+    // Edge-computing app: the camera stays off until the user deliberately
+    // asks for it - a single "Preview" click, or Start inspection. No idle
+    // polling in the background, ever.
+    private void PreviewOnce_Click(object sender, RoutedEventArgs e)
     {
         if (_running) return; // the run loop owns the camera while active
-        var wantIndex = _selectedCamera;
         try
         {
-            // Reopening the device every tick is what caused the visible preview
-            // stutter - a VideoCapture handle is expensive to create/destroy, so
-            // it's kept open across ticks and only replaced when the selected
-            // camera actually changes.
-            if (_previewCam == null || _previewCamIndex != wantIndex)
-            {
-                _previewCam?.Dispose();
-                _previewCam = new CameraService(wantIndex, 640, 480, 30);
-                _previewCamIndex = wantIndex;
-            }
-            using var frame = _previewCam.Read();
+            using var cam = new CameraService(_selectedCamera, 640, 480, 30);
+            using var frame = cam.Read();
             PreviewImage.Source = frame.ToBitmapSource();
+            PreviewIdleText.Visibility = Visibility.Collapsed;
         }
-        catch
-        {
-            // camera busy/unavailable - drop the stale handle so the next tick retries cleanly
-            _previewCam?.Dispose();
-            _previewCam = null;
-            _previewCamIndex = -1;
-            // leave the last frame showing rather than spamming errors
-        }
+        catch (Exception ex) { ShowError(ex); }
     }
 
     private void ToggleRun_Click(object sender, RoutedEventArgs e)
@@ -550,12 +529,6 @@ public partial class MainWindow : System.Windows.Window
 
         try
         {
-            // Release the preview's camera handle first - only one caller can
-            // hold a given device index open at a time.
-            _previewCam?.Dispose();
-            _previewCam = null;
-            _previewCamIndex = -1;
-
             _cam = new CameraService(_selectedCamera, 1280, 720, 30);
             _executor = new WorkflowExecutor(_current, new ModelSettings { Confidence = 0.35f, Iou = 0.45f, ImgSz = 640 });
             _recorder = new OutputRecorder(_current, new SignalConfig(), _gate);
@@ -587,6 +560,7 @@ public partial class MainWindow : System.Windows.Window
             _recorder.Record(frame, result);
 
             PreviewImage.Source = frame.ToBitmapSource();
+            PreviewIdleText.Visibility = Visibility.Collapsed;
             _total++;
             if (result.FinalVerdict == "OK") _ok++; else _ng++;
             UpdateCounters();
@@ -615,6 +589,8 @@ public partial class MainWindow : System.Windows.Window
         CleanupRun();
         ToggleRunButton.Content = "Start inspection";
         VerdictText.Text = "IDLE";
+        PreviewImage.Source = null;
+        PreviewIdleText.Visibility = Visibility.Visible;
     }
 
     private void CleanupRun()
@@ -634,8 +610,6 @@ public partial class MainWindow : System.Windows.Window
     protected override void OnClosed(EventArgs e)
     {
         CleanupRun();
-        _previewCam?.Dispose();
-        _previewCam = null;
         base.OnClosed(e);
     }
 }
