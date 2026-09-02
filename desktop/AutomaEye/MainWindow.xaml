@@ -152,9 +152,18 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <Border Grid.Column="0" Background="Black" BorderBrush="{StaticResource BorderBrush2}" BorderThickness="1" CornerRadius="8" Width="480" Height="360" HorizontalAlignment="Left">
-                            <Image x:Name="PreviewImage" Stretch="Uniform"/>
-                        </Border>
+                        <StackPanel Grid.Column="0" HorizontalAlignment="Left">
+                            <Border Background="Black" BorderBrush="{StaticResource BorderBrush2}" BorderThickness="1" CornerRadius="8" Width="480" Height="360">
+                                <Grid>
+                                    <Image x:Name="PreviewImage" Stretch="Uniform"/>
+                                    <TextBlock x:Name="PreviewIdleText" Text="Camera is off - click Preview or Start inspection"
+                                               Foreground="{StaticResource TextDimBrush}" FontSize="12" TextWrapping="Wrap" TextAlignment="Center"
+                                               HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="300"/>
+                                </Grid>
+                            </Border>
+                            <Button Content="Preview (one frame)" Style="{StaticResource SecondaryButton}" HorizontalAlignment="Left" Margin="0,10,0,0" Click="PreviewOnce_Click"
+                                    ToolTip="Grabs a single frame to check framing - the camera stays off otherwise, this is an edge-computing device"/>
+                        </StackPanel>
 
                         <StackPanel Grid.Column="1" Margin="20,0,0,0" MaxWidth="320" HorizontalAlignment="Left">
                             <TextBlock Text="Camera" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,6"/>

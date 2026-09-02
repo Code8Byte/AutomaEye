@@ -1,0 +1,58 @@
+<Window x:Class="AutomaEye.AddModelDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="AutomaEye - Add Model" Width="820" Height="740"
+        WindowStartupLocation="CenterOwner" ResizeMode="NoResize"
+        Background="{StaticResource BgBrush}" Foreground="{StaticResource TextBrush}">
+    <!-- Fixed size rather than SizeToContent: with a WrapPanel of variable-
+         width CheckBoxes below, SizeToContent measured before the wrap was
+         resolved and clipped the dialog. Vertical-only scroll is a fallback
+         if a future longer addon list overflows - horizontal scroll must
+         stay off, since it gives children infinite width during layout and
+         the WrapPanel below would never wrap at all. -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="20">
+        <TextBlock Text="Add model" FontSize="15" FontWeight="SemiBold" Margin="0,0,0,14"/>
+
+        <TextBlock Text="Model name" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,4"/>
+        <TextBox x:Name="NameInput" Margin="0,0,0,12"/>
+
+        <TextBlock Text="Classes, comma-separated (e.g. OK,scratch,rust)" Foreground="{StaticResource TextDimBrush}" Margin="0,0,0,4"/>
+        <TextBox x:Name="ClassesInput" Text="OK,NG" Margin="0,0,0,16"/>
+
+        <TextBlock Text="AI type" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <UniformGrid Columns="2" Rows="2" Margin="0,0,0,18">
+            <Button x:Name="TypeDetectionButton" Content="AI Detection" Style="{StaticResource SecondaryButton}" Margin="0,0,6,6" Click="TypeButton_Click" Tag="Detection"/>
+            <Button x:Name="TypeClassificationButton" Content="AI Classification" Style="{StaticResource SecondaryButton}" Margin="0,0,0,6" Click="TypeButton_Click" Tag="Classification"/>
+            <Button x:Name="TypeSegmentationButton" Content="AI Segmentation" Style="{StaticResource SecondaryButton}" Margin="0,6,6,0" Click="TypeButton_Click" Tag="Segmentation"/>
+            <Button x:Name="TypeOcrButton" Content="AI OCR" Style="{StaticResource SecondaryButton}" Margin="0,6,0,0" Click="TypeButton_Click" Tag="OCR"/>
+        </UniformGrid>
+
+        <TextBlock Text="Add-ons (optional)" FontWeight="SemiBold" Margin="0,0,0,8"/>
+        <TextBlock TextWrapping="Wrap" Foreground="{StaticResource TextDimBrush}" FontSize="11" Margin="0,0,0,8"
+                   Text="Rule-based tools layered on top of the AI type above - attach any that apply, or none."/>
+        <WrapPanel Margin="0,0,0,16">
+            <CheckBox x:Name="AddonPresenceCheck" Content="Presence Check" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonScratches" Content="Scratches" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonGdt" Content="GD&amp;T Measurement" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonPositioning" Content="Positioning" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonColorInspection" Content="Color Inspection" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonCount" Content="Count" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonCharacterRecognition" Content="Character Recognition" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonCode1D" Content="1D Code" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonCode2D" Content="2D Code" Margin="0,0,16,8"/>
+            <CheckBox x:Name="AddonCalibration" Content="Calibration" Margin="0,0,16,8"/>
+        </WrapPanel>
+
+        <Grid Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="1" Content="Cancel" Style="{StaticResource SecondaryButton}" Margin="0,0,8,0" Click="Cancel_Click"/>
+            <Button Grid.Column="2" Content="Add model" Style="{StaticResource PrimaryButton}" Click="Ok_Click"/>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</Window>
